@@ -14,14 +14,14 @@ type LayoutProps = {
 
 const useDisablePinchZoom = () => {
   useEffect(() => {
-    const preventZoom = (e) => {
+    const preventZoom = (e: { preventDefault: () => void }) => {
       e.preventDefault();
-      document.body.style.zoom = 0.99;
+      document.body.style.setProperty('zoom', '0.99');
     };
 
-    const resetZoom = (e) => {
+    const resetZoom = (e: { preventDefault: () => void }) => {
       e.preventDefault();
-      document.body.style.zoom = 1;
+      document.body.style.setProperty('zoom', '1');
     };
 
     document.addEventListener('gesturestart', preventZoom);
