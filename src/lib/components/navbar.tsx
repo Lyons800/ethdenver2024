@@ -1,5 +1,6 @@
 'use client';
 
+import { Haptics } from '@capacitor/haptics';
 import {
   BellIcon,
   CompassIcon,
@@ -41,6 +42,10 @@ const BottomNav = () => {
     },
   ];
 
+  const hapticsVibrate = async () => {
+    await Haptics.vibrate();
+  };
+
   return (
     <div className="sm:hidden">
       <nav className="pb-safe fixed bottom-0 w-full border-t bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
@@ -54,6 +59,7 @@ const BottomNav = () => {
                   ? 'text-indigo-500 dark:text-indigo-400'
                   : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
               }`}
+              onClick={hapticsVibrate}
             >
               {icon}
               <span className="text-xs text-zinc-600 dark:text-zinc-400">
