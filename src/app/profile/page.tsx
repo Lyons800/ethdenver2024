@@ -13,7 +13,6 @@
   ```
 */
 
-
 export default function Profile() {
   return (
     <div className="divide-y divide-white/5">

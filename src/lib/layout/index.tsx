@@ -1,8 +1,9 @@
 import type { ReactNode } from 'react';
 
+import BottomNav from '../components/navbar';
 import { ThemeProvider } from '@/lib/components/theme-provider';
 
-import Footer from './Footer';
+// import Footer from './Footer';
 import Header from './Header';
 
 type LayoutProps = {
@@ -15,7 +16,8 @@ const Layout = ({ children }: LayoutProps) => {
       <div className="flex min-h-screen flex-col">
         <Header />
         <main className="wrapper">{children}</main>
-        <Footer />
+        {/* <Footer /> */}
+        <BottomNav />
       </div>
     </ThemeProvider>
   );
