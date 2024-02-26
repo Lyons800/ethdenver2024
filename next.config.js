@@ -4,7 +4,7 @@ const withPWA = require('next-pwa')({
   // add your own icons to src/app/manifest.ts
   // to re-generate manifest.json, you can visit https://tomitm.github.io/appmanifest/
   cacheOnFrontEndNav: true,
-  aggressiveFrontEndNavCaching: true,
+  runtimeCaching: true,
   reloadOnOnline: true,
   swcMinify: true,
 });
