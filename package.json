@@ -27,6 +27,7 @@
     "@near-wallet-selector/my-near-wallet": "^8.9.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.5",
     "class-variance-authority": "^0.7.0",
@@ -45,7 +46,8 @@
     "styles.css": "link:@near-wallet-selector/modal-ui/styles.css",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "vaul": "^0.9.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
