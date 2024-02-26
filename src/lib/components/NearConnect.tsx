@@ -5,8 +5,8 @@ import { setCookie, deleteCookie } from 'cookies-next';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useState, useEffect } from 'react';
 
-import { Wallet } from '../../../../near/near-wallet'; // Adjust the import path according to your project structure
-import getConfig from '../../../config'; // Adjust the import path as needed
+import getConfig from '../../config'; // Adjust the import path as needed
+import { Wallet } from '../../near/near-wallet'; // Adjust the import path according to your project structure
 
 const SignInButton = () => {
   const [wallet, setWallet] = useState(null);
