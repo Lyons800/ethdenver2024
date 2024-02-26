@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata, Viewport } from 'next';
 
 import Layout from '@/lib/layout';
@@ -5,6 +7,7 @@ import { fontSans } from '@/lib/styles/fonts';
 import { cn } from '@/lib/styles/utils';
 
 import '@/lib/styles/globals.css';
+import { useEffect } from 'react';
 
 const APP_NAME = 'nextarter-tailwind';
 
@@ -45,7 +48,33 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
+const useDisablePinchZoom = () => {
+  useEffect(() => {
+    const preventZoom = (e) => {
+      e.preventDefault();
+      document.body.style.zoom = 0.99;
+    };
+
+    const resetZoom = (e) => {
+      e.preventDefault();
+      document.body.style.zoom = 1;
+    };
+
+    document.addEventListener('gesturestart', preventZoom);
+    document.addEventListener('gesturechange', preventZoom);
+    document.addEventListener('gestureend', resetZoom);
+
+    return () => {
+      document.removeEventListener('gesturestart', preventZoom);
+      document.removeEventListener('gesturechange', preventZoom);
+      document.removeEventListener('gestureend', resetZoom);
+    };
+  }, []);
+};
+
 const RootLayout = ({ children }: RootLayoutProps) => {
+  useDisablePinchZoom();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
