@@ -42,7 +42,7 @@ const BottomNav = () => {
   ];
 
   return (
-    <div className="sm:hidden">
+    <div className="pb-4 sm:hidden">
       <nav className="pb-safe fixed bottom-0 w-full border-t bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
         <div className="mx-auto flex h-16 max-w-md items-center justify-around px-6">
           {links.map(({ href, label, icon }) => (

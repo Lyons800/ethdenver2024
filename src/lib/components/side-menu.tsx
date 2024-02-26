@@ -20,12 +20,12 @@ export function SideMenu() {
   const topLinks = [
     {
       label: 'My Tickets',
-      href: '/',
+      href: '/my-tickets',
       icon: <TicketIcon size={28} />,
     },
     {
-      label: 'Connections',
-      href: '/discover',
+      label: 'Network',
+      href: '/network',
       icon: <Link2Icon size={28} />,
     },
     {
