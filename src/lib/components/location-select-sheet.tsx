@@ -58,7 +58,7 @@ export function LocationSelectSheet({
         style={{ height: '95vh' }}
         className="flex w-full flex-col p-4"
       >
-        <AddressAutocomplete />
+        <AddressAutocomplete setSelectedAddress={onAddressSelect} />
         <ScrollArea className="h-auto overflow-y-auto">
           <Button onClick={handleLocationClick}>Current Location</Button>
         </ScrollArea>

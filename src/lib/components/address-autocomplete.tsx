@@ -16,7 +16,11 @@ interface Suggestion {
   // Include other properties as needed
 }
 
-function AddressAutocomplete() {
+interface AddressAutocompleteProps {
+  setSelectedAddress: (address: SetStateAction<string>) => void;
+}
+
+function AddressAutocomplete({ setSelectedAddress }: AddressAutocompleteProps) {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
 
@@ -56,6 +60,7 @@ function AddressAutocomplete() {
   const handleSelect = (suggestion: Suggestion) => {
     setQuery(suggestion.place_name); // Update the input field with the selected address
     setSuggestions([]); // Clear suggestions
+    setSelectedAddress(suggestion.place_name); // Update the selected address state
     // Additional actions on select (e.g., update map view)
   };
 
