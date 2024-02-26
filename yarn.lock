@@ -961,6 +961,13 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@capacitor/core@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@capacitor/core/-/core-5.7.0.tgz#ef376ce975634bb5031eedd52a15d6f14e4beb67"
+  integrity sha512-wa9Fao+Axa1t2ZERMyQD9r0xyfglQyC4DHQKintzKaIqcRuVe9J31TmfD3IxROYi9LGpY4X8cq4m4bjb0W94Qg==
+  dependencies:
+    tslib "^2.1.0"
+
 "@capacitor/haptics@^5.0.7":
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/@capacitor/haptics/-/haptics-5.0.7.tgz#7ae294b7180f08c27f9c8af12f3c5f2a8057d5ba"
