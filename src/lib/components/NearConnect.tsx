@@ -25,10 +25,10 @@ const SignInButton = () => {
       setWallet(walletInstance as any);
       setIsSignedIn(signedIn);
 
-      
-
       if (signedIn) {
-        const keystore = localStorage.getItem(`near-api-js:keystore:${walletInstance.accountId}`);
+        const keystore = localStorage.getItem(
+          `near-api-js:keystore:${walletInstance.accountId}`
+        );
         if (keystore) {
           setCookie('near-function-key', keystore, {
             maxAge: 60 * 60 * 24 * 7,
