@@ -52,9 +52,10 @@ function AddressAutocomplete({ setSelectedAddress }: AddressAutocompleteProps) {
     300
   ); // Adjust debounce time as needed
 
-  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
-    setQuery(e.target.value);
-    debouncedFetchSuggestions(e.target.value);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setQuery(inputValue);
+    debouncedFetchSuggestions(inputValue);
   };
 
   const handleSelect = (suggestion: Suggestion) => {
