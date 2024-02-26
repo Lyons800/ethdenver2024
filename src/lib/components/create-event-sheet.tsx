@@ -13,6 +13,7 @@ import { LocationSelectSheet } from './location-select-sheet';
 
 export function CreateEventSheet() {
   // State to manage input values
+  const [selectedAddress, setSelectedAddress] = useState('');
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [eventDescription, setEventDescription] = useState('');
@@ -92,7 +93,10 @@ export function CreateEventSheet() {
               />
             </div>
             <div>
-              <LocationSelectSheet />
+              <LocationSelectSheet
+                selectedAddress={selectedAddress}
+                onAddressSelect={setSelectedAddress}
+              />
             </div>
             <div className="flex w-full justify-center">
               <Button className=" w-[300px] justify-center">Create</Button>
