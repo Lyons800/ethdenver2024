@@ -3,13 +3,14 @@
 import { PlusCircleIcon } from 'lucide-react';
 import { useState } from 'react';
 
+import { LocationSelectSheet } from './location-select-sheet';
+import MapComponent from './map';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { ScrollArea } from './ui/scroll-area';
 import { Textarea } from './ui/textarea';
-import { LocationSelectSheet } from './location-select-sheet';
 
 export function CreateEventSheet() {
   // State to manage input values
@@ -23,11 +24,7 @@ export function CreateEventSheet() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-normal flex flex-col text-sm"
-        >
+        <Button size="icon" className="text-normal flex flex-col text-sm">
           <PlusCircleIcon size={18} />
           Create Event
         </Button>
@@ -97,6 +94,9 @@ export function CreateEventSheet() {
                 selectedAddress={selectedAddress}
                 onAddressSelect={setSelectedAddress}
               />
+              <div className="h-[250px] w-full overflow-hidden rounded-lg">
+                <MapComponent />
+              </div>
             </div>
             <div className="flex w-full justify-center">
               <Button className=" w-[300px] justify-center">Create</Button>

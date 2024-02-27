@@ -1,33 +1,25 @@
-import type { SetStateAction } from 'react';
-import { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import ReactMapGL from 'react-map-gl';
+import Map from 'react-map-gl';
 
-export default function Map() {
-  const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '100%',
-    // The latitude and longitude of the center of London
-    latitude: 51.5074,
-    longitude: -0.1278,
-    zoom: 10,
-  });
+import 'mapbox-gl/dist/mapbox-gl.css';
+import classes from './map.module.css';
+
+export default function Home() {
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
+
   return (
-    // <ReactMapGL
-    //   mapStyle="mapbox://styles/mapbox/streets-v11"
-    //   mapboxApiAccessToken={process.env.MAPBOX_KEY}
-    //   {...viewport}
-    // //   onViewportChange={(
-    // //     nextViewport: SetStateAction<{
-    // //       width: string;
-    // //       height: string;
-    // //       // The latitude and longitude of the center of London
-    // //       latitude: number;
-    // //       longitude: number;
-    // //       zoom: number;
-    // //     }>
-    // //   ) => setViewport(nextViewport)}
-    // />
-    <div>Map</div>
+    <div className={classes.mainStyle}>
+      <Map
+        mapboxAccessToken={mapboxToken}
+        mapStyle="mapbox://styles/mapbox/streets-v12"
+        style={{ width: '100%', height: '100%' }} // Adjust based on the corrected approach
+        initialViewState={{
+          latitude: 35.668641,
+          longitude: 139.750567,
+          zoom: 10,
+        }}
+        maxZoom={20}
+        minZoom={3}
+      />
+    </div>
   );
 }
