@@ -4,10 +4,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import classes from './map.module.css';
 
 export default function Home() {
-  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
 
   return (
-    <main className={classes.mainStyle}>
+    <div className={classes.mainStyle}>
       <Map
         mapboxAccessToken={mapboxToken}
         mapStyle="mapbox://styles/mapbox/streets-v12"
@@ -20,6 +20,6 @@ export default function Home() {
         maxZoom={20}
         minZoom={3}
       />
-    </main>
+    </div>
   );
 }

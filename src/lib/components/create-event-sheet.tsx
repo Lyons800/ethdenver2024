@@ -94,7 +94,9 @@ export function CreateEventSheet() {
                 selectedAddress={selectedAddress}
                 onAddressSelect={setSelectedAddress}
               />
-              <MapComponent />
+              <div className="h-[250px] w-full overflow-hidden rounded-lg">
+                <MapComponent />
+              </div>
             </div>
             <div className="flex w-full justify-center">
               <Button className=" w-[300px] justify-center">Create</Button>
