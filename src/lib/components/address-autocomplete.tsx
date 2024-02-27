@@ -7,7 +7,9 @@ import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 
-const accessToken = process.env.MAPBOX_API_TOKEN;
+const accessToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
+// const accessToken =
+//   'pk.eyJ1IjoibHlvbnM4MDAiLCJhIjoiY2x0M2tpd2lmMXdieTJwbzFldDVuc2dvaiJ9.QZ8h9_XR1F8BtEYi47Rucw';
 
 interface Suggestion {
   id: string;
