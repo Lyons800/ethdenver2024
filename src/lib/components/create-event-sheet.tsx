@@ -60,9 +60,13 @@ export function CreateEventSheet() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button size="icon" className="text-normal flex flex-col text-sm">
+        <Button
+          size="icon"
+          variant="ghost"
+          className="flex flex-col space-y-1 text-xs font-normal"
+        >
           <PlusCircleIcon size={18} />
-          Create Event
+          <div>Create Event</div>
         </Button>
       </DrawerTrigger>
 
