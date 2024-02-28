@@ -5,6 +5,7 @@ import { fontSans } from '@/lib/styles/fonts';
 import { cn } from '@/lib/styles/utils';
 
 import '@/lib/styles/globals.css';
+import { useEffect } from 'react';
 
 const APP_NAME = 'nextarter-tailwind';
 
@@ -46,11 +47,12 @@ interface RootLayoutProps {
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'bg-background min-h-screen font-sans antialiased',
+          'min-h-screen bg-background font-sans antialiased',
           fontSans.variable
         )}
       >
