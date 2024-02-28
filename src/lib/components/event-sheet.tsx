@@ -1,127 +1,51 @@
 'use client';
 
-import { PlusCircleIcon } from 'lucide-react';
-import { useState } from 'react';
+import { formatDate } from 'date-fns';
+import { Clock, MapPinIcon } from 'lucide-react';
+import Image from 'next/image';
 
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
-import { Input } from './ui/input';
-import { Label } from './ui/label';
-import { Textarea } from './ui/textarea';
 import { ScrollArea } from './ui/scroll-area';
 
-export function EventSheet() {
-  // State to manage input values
-  const [eventName, setEventName] = useState('');
-  const [eventDate, setEventDate] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
-  // State to manage drawer visibility
-  // Toggle drawer visibility
-
+export function EventSheet({ event }) {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="ghost" size="icon">
-          <PlusCircleIcon size={18} />
-        </Button>
+        <button
+          type="button"
+          key={event.id}
+          className="flex flex-row items-start rounded-lg border p-4"
+        >
+          <Image
+            src={event.image}
+            alt={event.name}
+            width={60}
+            height={60}
+            className="rounded-md"
+          />
+          <div className="ml-4 flex flex-col items-start">
+            <h3 className="mt-0 font-semibold">{event.name}</h3>
+            <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
+              <Clock size="16" />
+              {/* {formatDate(event.dateTime)} */}
+            </p>
+            <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
+              <MapPinIcon size="16" />
+              {event.location}
+            </p>
+          </div>
+        </button>
       </DrawerTrigger>
 
-      <DrawerContent className="flex h-screen w-full flex-col p-4">
+      <DrawerContent
+        className="flex w-full flex-col p-4"
+        style={{ height: '95vh' }}
+      >
         {/* Adjust the bottom padding/margin to ensure content does not get hidden behind the button */}
         <ScrollArea className="h-auto overflow-y-auto">
-          <h2 className="text-lg font-bold">Create Event</h2>
-          <div className="space-y-4">
-            <div>
-              <Label>Event Banner</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Logo</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Name</Label>
-              <Input
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Date and Time</Label>
-              <Input
-                type="datetime-local"
-                value={eventDate}
-                onChange={(e) => setEventDate(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Description</Label>
-              <Textarea
-                value={eventDescription}
-                onChange={(e) => setEventDescription(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Banner</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Logo</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Name</Label>
-              <Input
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Date and Time</Label>
-              <Input
-                type="datetime-local"
-                value={eventDate}
-                onChange={(e) => setEventDate(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Description</Label>
-              <Textarea
-                value={eventDescription}
-                onChange={(e) => setEventDescription(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Banner</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Logo</Label>
-              <Input type="file" accept="image/*" />
-            </div>
-            <div>
-              <Label>Event Name</Label>
-              <Input
-                value={eventName}
-                onChange={(e) => setEventName(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Date and Time</Label>
-              <Input
-                type="datetime-local"
-                value={eventDate}
-                onChange={(e) => setEventDate(e.target.value)}
-              />
-            </div>
-            <div>
-              <Label>Event Description</Label>
-              <Textarea
-                value={eventDescription}
-                onChange={(e) => setEventDescription(e.target.value)}
-              />
-            </div>
-          </div>
+          <h2 className="text-lg font-bold">Event Details</h2>
+          <div className="space-y-4" />
         </ScrollArea>
         {/* Button is positioned absolutely at the bottom of the DrawerContent */}
         <div className="flex w-full justify-center">
