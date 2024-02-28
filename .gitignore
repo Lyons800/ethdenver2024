@@ -2,8 +2,20 @@
 
 # dependencies
 /node_modules
+/neardev
 /.pnp
 .pnp.js
+.yarn
+/out
+
+# cache
+.cache
+.parcel-cache
+
+#contracts
+target
+out
+notes
 
 # vscode
 .vscode/settings.json
@@ -17,6 +29,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
