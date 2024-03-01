@@ -7,6 +7,8 @@ import { cn } from '@/lib/styles/utils';
 import '@/lib/styles/globals.css';
 import { useEffect } from 'react';
 
+import { Providers } from '@/lib/components/providers';
+
 const APP_NAME = 'nextarter-tailwind';
 
 export const metadata: Metadata = {
@@ -47,7 +49,6 @@ interface RootLayoutProps {
 }
 
 const RootLayout = ({ children }: RootLayoutProps) => {
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -57,7 +58,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         )}
       >
         <Layout>
-          <div className="flex-1">{children}</div>
+          <Providers>
+            <div className="flex-1">{children}</div>
+          </Providers>
         </Layout>
       </body>
     </html>
