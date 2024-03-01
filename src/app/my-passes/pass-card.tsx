@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const PassCard = ({ pass }) => {
   const [isExpanded, setIsExpanded] = useState(false);
