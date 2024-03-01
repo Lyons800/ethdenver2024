@@ -23,12 +23,12 @@ import { toast } from 'react-hot-toast';
 import { usePathname, useRouter } from 'next/navigation';
 
 const IS_PREVIEW = process.env.VERCEL_ENV === 'preview';
-export interface ChatProps extends React.ComponentProps<'div'> {
-  initialMessages?: Message[];
-  id?: string;
-}
+// export interface ChatProps extends React.ComponentProps<'div'> {
+//   initialMessages?: Message[];
+//   id?: string;
+// }
 
-export default function Chat({ id, className }: ChatProps) {
+export default function Chat() {
   const router = useRouter();
   const path = usePathname();
   const [previewToken, setPreviewToken] = useLocalStorage<string | null>(
@@ -38,6 +38,8 @@ export default function Chat({ id, className }: ChatProps) {
   const [previewTokenDialog, setPreviewTokenDialog] = useState(true)
   const [previewTokenInput, setPreviewTokenInput] = useState(previewToken ?? '')
 
+  const id = '1';
+  const className = '';
 
   const initialMessages: Message[] = [
     {
