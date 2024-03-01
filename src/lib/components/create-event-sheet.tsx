@@ -1,7 +1,7 @@
 'use client';
 
 import { PlusCircleIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { LocationSelectSheet } from './location-select-sheet';
 import MapComponent from './map';
@@ -12,12 +12,46 @@ import { Label } from './ui/label';
 import { ScrollArea } from './ui/scroll-area';
 import { Textarea } from './ui/textarea';
 
+async function geocodeAddress(address) {
+  const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxToken}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const { features } = data;
+    if (features && features.length > 0) {
+      const { center } = features[0];
+      return { longitude: center[0], latitude: center[1] };
+    }
+    return null;
+  } catch (error) {
+    console.error('Failed to geocode address', error);
+    return null;
+  }
+}
+
 export function CreateEventSheet() {
   // State to manage input values
   const [selectedAddress, setSelectedAddress] = useState('');
   const [eventName, setEventName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const [eventDescription, setEventDescription] = useState('');
+  const [coordinates, setCoordinates] = useState({
+    latitude: null,
+    longitude: null,
+  });
+
+  useEffect(() => {
+    if (selectedAddress) {
+      geocodeAddress(selectedAddress).then((coords) => {
+        if (coords) {
+          setCoordinates(coords);
+        }
+      });
+    }
+  }, [selectedAddress]); // Re-run this effect if selectedAddress changes
+
   // State to manage drawer visibility
   // Toggle drawer visibility
 
@@ -95,7 +129,11 @@ export function CreateEventSheet() {
                 onAddressSelect={setSelectedAddress}
               />
               <div className="h-[250px] w-full overflow-hidden rounded-lg">
-                <MapComponent />
+                <MapComponent
+                  latitude={coordinates.latitude}
+                  longitude={coordinates.longitude}
+                  token={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
+                />
               </div>
             </div>
             <div className="flex w-full justify-center">
