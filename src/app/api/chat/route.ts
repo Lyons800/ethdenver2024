@@ -1,8 +1,8 @@
-import { kv } from '@vercel/kv'
+// import { kv } from '@vercel/kv'
 import { OpenAIStream, StreamingTextResponse } from 'ai'
 import OpenAI from 'openai'
 
-import { auth } from '@/auth'
+// import { auth } from '@/auth'
 import { nanoid } from '@/lib/utils'
 
 export const runtime = 'edge'
@@ -14,7 +14,7 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
   const json = await req.json()
   const { messages, previewToken } = json
-  const userId = (await auth())?.user.id
+  // const userId = (await auth())?.user.id
   console.log('messages: chat ', messages)
   // const systemMessage = {
   //   content:
@@ -33,11 +33,11 @@ export async function POST(req: Request) {
     role: 'system'
   }
 
-  if (!userId) {
-    return new Response('Unauthorized', {
-      status: 401
-    })
-  }
+  // if (!userId) {
+  //   return new Response('Unauthorized', {
+  //     status: 401
+  //   })
+  // }
   const messagesWithPrompt = [systemMessage, ...messages]
 
   if (previewToken) {
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
       const payload = {
         id,
         title,
-        userId,
+        // userId,
         createdAt,
         path,
         messages: [
@@ -71,11 +71,11 @@ export async function POST(req: Request) {
           }
         ]
       }
-      await kv.hmset(`chat:${id}`, payload)
-      await kv.zadd(`user:chat:${userId}`, {
-        score: createdAt,
-        member: `chat:${id}`
-      })
+      // await kv.hmset(`chat:${id}`, payload)
+      // await kv.zadd(`user:chat:${userId}`, {
+      //   score: createdAt,
+      //   member: `chat:${id}`
+      // })
       const msgArray = [
         ...messages,
         {
@@ -137,8 +137,8 @@ export async function POST(req: Request) {
         }
         console.log('setting goalPayload: ', goalPayload)
 
-        const setResp = await kv.hmset(`goal:${id}`, goalPayload)
-        console.log('kv setResp', setResp)
+        // const setResp = await kv.hmset(`goal:${id}`, goalPayload)
+        // console.log('kv setResp', setResp)
       } else {
         console.log('goal not set')
       }
