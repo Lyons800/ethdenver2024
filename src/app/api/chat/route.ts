@@ -11,6 +11,11 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
 
+interface VercelChatMessage {
+  content: string;
+  role: string;
+}
+
 export async function POST(req: Request) {
   const json = await req.json()
   const { messages, previewToken } = json
@@ -83,9 +88,10 @@ export async function POST(req: Request) {
           role: 'assistant'
         }
       ]
-      const formatMessage = (message: VercelChatMessage) => {
+      const formatMessage = (message: any) => {
         return `${message.role}: ${message.content}`
       }
+
       const allMessages = formatMessage(msgArray)
       const agentHelperPrompt = `You are a helpful assistant. Your job is to look at the current 
         conversation between a client and a coach. If the message from the coach Assistant
@@ -126,7 +132,7 @@ export async function POST(req: Request) {
       const chatId = 'AidgokA'
       // NkgXMlr
       const categoryResponse = JSON.parse(
-        goalAgentResponse.choices[0].message.content
+        goalAgentResponse.choices[0].message?.content ?? ''
       )
       console.log('categoryResponse: ', categoryResponse)
 

@@ -23,16 +23,17 @@ export default function InitContractButton() {
       });
       console.log('Contract initialized:', contract);
     } catch (error) {
+      const errorMessage = (error as Error).message;
       toast({
         title: 'Error initializing contract',
-        description: `An error occurred: ${error.message}`,
+        description: `An error occurred: ${errorMessage}`,
       });
       console.error('Error initializing contract:', error);
     }
   };
 
   return (
-    <Button onClick={handleClick} variant="outline" size="md">
+    <Button onClick={handleClick} variant="outline" size="default">
       Initialize NEAR Contract
     </Button>
   );

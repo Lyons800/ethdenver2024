@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { initNearContract } from '@/near/near-contract-helper';
 
-export default function useNearContract(env) {
+export default function useNearContract(env: string) {
   const [contract, setContract] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -16,7 +16,7 @@ export default function useNearContract(env) {
 
   // Wrap contract calls to handle loading and errors
   const callContract = useCallback(
-    async (methodName, args = {}) => {
+    async (methodName: string | number, args = {}) => {
       if (!contract) {
         console.error('Contract is not initialized');
         return null;

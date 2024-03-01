@@ -12,6 +12,7 @@ export default function Test() {
         <QrReader
           onResult={(result, error) => {
             if (!!result) {
+              //@ts-ignore
               setData(result?.text);
             }
 
