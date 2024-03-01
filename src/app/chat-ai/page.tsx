@@ -35,8 +35,10 @@ export default function Chat() {
     'ai-token',
     null
   );
-  const [previewTokenDialog, setPreviewTokenDialog] = useState(true)
-  const [previewTokenInput, setPreviewTokenInput] = useState(previewToken ?? '')
+  const [previewTokenDialog, setPreviewTokenDialog] = useState(true);
+  const [previewTokenInput, setPreviewTokenInput] = useState(
+    previewToken ?? ''
+  );
 
   const id = '1';
   const className = '';
@@ -54,19 +56,19 @@ export default function Chat() {
       id,
       body: {
         id,
-        previewToken
+        previewToken,
       },
       onResponse(response) {
         if (response.status === 401) {
-          toast.error(response.statusText)
+          toast.error(response.statusText);
         }
       },
       onFinish() {
         if (!path.includes('chat')) {
-          window.history.pushState({}, '', `/chat/${id}`)
+          window.history.pushState({}, '', `/chat/${id}`);
         }
-      }
-    })
+      },
+    });
 
   // const messages: Message[] = [
   //   {
@@ -105,9 +107,7 @@ export default function Chat() {
         setInput={setInput}
       />
 
-      
-
-    {/* <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
+      {/* <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Enter your OpenAI Key</DialogTitle>
