@@ -1,19 +1,45 @@
 'use client';
 
-import { Button } from '@/lib/components/ui/button';
-import { QRCode } from 'react-qrcode-logo';
+import React, { useState } from 'react';
+import { QrReader } from 'react-qr-reader';
 
-export default function QRCodeViewer() {
+export default function Test() {
+  const [data, setData] = useState('No result');
+
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-center bg-cover bg-no-repeat" >
-      <QRCode
-        value="https://github.com/gcoro/react-qrcode-logo"
-        size={256}
-        bgColor="rgba(255, 255, 255, 0.8)" // Semi-transparent white background
-        fgColor="#000000"
-        // logoImage="https://cdn-images-1.medium.com/max/1200/1*lKHjKj1SSVQe4XjosHjrow.png" // Can also be a data URL
-        // You can further customize your QR code with additional props
-      />
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="w-full max-w-md px-4">
+        <QrReader
+          onResult={(result, error) => {
+            if (!!result) {
+              setData(result?.text);
+            }
+
+            if (!!error) {
+              console.info(error);
+            }
+          }}
+          constraints={{ facingMode: 'environment' }}
+          videoContainerStyle={{ borderRadius: '12px', overflow: 'hidden' }}
+          videoStyle={{ width: '100%', height: 'auto' }} // This ensures the video is responsive and maintains aspect ratio
+          ViewFinder={({ width, height }) => (
+            <svg width={width} height={height} style={{ position: 'absolute', top: 0, left: 0 }}>
+              <rect
+                x="0"
+                y="0"
+                width="100%"
+                height="100%"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="4"
+                strokeDasharray="20"
+              />
+            </svg>
+          )}
+          className="aspect-square" // This makes the video viewer square
+        />
+      </div>
+      <p className="mt-4 text-lg font-semibold text-gray-700">{data}</p>
     </div>
   );
 }
