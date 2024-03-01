@@ -8,9 +8,21 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.50.1)
+  '@keypom/core':
+    specifier: 1.0.2
+    version: 1.0.2(@near-js/accounts@0.1.3)(@near-js/crypto@0.0.4)(@near-js/keystores-browser@0.0.4)(@near-js/keystores@0.0.4)(@near-js/transactions@0.2.0)(@near-js/types@0.0.4)(@near-js/utils@0.0.4)(@near-js/wallet-account@0.0.6)(near-api-js@3.0.3)
   '@mapbox/search-js-react':
     specifier: ^1.0.0-beta.18
     version: 1.0.0-beta.18(mapbox-gl@3.1.2)(react-dom@18.2.0)(react@18.2.0)
+  '@near-js/accounts':
+    specifier: 0.1.3
+    version: 0.1.3
+  '@near-js/signers':
+    specifier: 0.0.4
+    version: 0.0.4
+  '@near-js/transactions':
+    specifier: 0.2.0
+    version: 0.2.0
   '@near-wallet-selector/ledger':
     specifier: ^8.9.5
     version: 8.9.5(near-api-js@3.0.3)(typescript@5.3.3)
@@ -104,6 +116,9 @@ dependencies:
   react-mapbox-gl:
     specifier: ^5.1.1
     version: 5.1.1(mapbox-gl@3.1.2)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+  react-qrcode-logo:
+    specifier: ^2.9.0
+    version: 2.9.0(react-dom@18.2.0)(react@18.2.0)
   sharp:
     specifier: ^0.33.2
     version: 0.33.2
@@ -1894,6 +1909,36 @@ packages:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  /@keypom/core@1.0.2(@near-js/accounts@0.1.3)(@near-js/crypto@0.0.4)(@near-js/keystores-browser@0.0.4)(@near-js/keystores@0.0.4)(@near-js/transactions@0.2.0)(@near-js/types@0.0.4)(@near-js/utils@0.0.4)(@near-js/wallet-account@0.0.6)(near-api-js@3.0.3):
+    resolution: {integrity: sha512-FFmOwbZCj3g8IHEdnhbTMHIp53rKjcorOlyoIKk0HaoC8rB/+Cl/BP6It1HP6DxGHorccs7yB4RXBnJei60hAg==}
+    requiresBuild: true
+    peerDependencies:
+      '@near-js/accounts': ^0.1.3
+      '@near-js/crypto': ^0.0.4
+      '@near-js/keystores': ^0.0.4
+      '@near-js/keystores-browser': ^0.0.4
+      '@near-js/transactions': ^0.2.0
+      '@near-js/types': ^0.0.4
+      '@near-js/utils': ^0.0.4
+      '@near-js/wallet-account': ^0.0.6
+    dependencies:
+      '@near-js/accounts': 0.1.3
+      '@near-js/crypto': 0.0.4
+      '@near-js/keystores': 0.0.4
+      '@near-js/keystores-browser': 0.0.4
+      '@near-js/transactions': 0.2.0
+      '@near-js/types': 0.0.4
+      '@near-js/utils': 0.0.4
+      '@near-js/wallet-account': 0.0.6
+      '@near-wallet-selector/core': 8.9.5(near-api-js@3.0.3)
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      near-seed-phrase: 0.2.0
+      util: 0.12.5
+    transitivePeerDependencies:
+      - near-api-js
+    dev: false
+
   /@ledgerhq/devices@8.2.1:
     resolution: {integrity: sha512-l/2I/Xzt7Z32OmGzoc/mUvaZivdn7Id/SO7hBTGpk7PtJTpBRxVAabP4GWEKCayGyOAcvTwoVxM0HMkNVfIzOQ==}
     dependencies:
@@ -2025,6 +2070,25 @@ packages:
       sort-object: 3.0.3
     dev: false
 
+  /@near-js/accounts@0.1.3:
+    resolution: {integrity: sha512-rmS1/WwIAWlfSMxHlDN3Q0YLOAscfrU+fkg9PsNI0sdzvdJ+bmiFqAoXi6L3D3KWZemteIudVEXMcegjreHnMg==}
+    dependencies:
+      '@near-js/crypto': 0.0.4
+      '@near-js/providers': 0.0.6
+      '@near-js/signers': 0.0.4
+      '@near-js/transactions': 0.2.0
+      '@near-js/types': 0.0.4
+      '@near-js/utils': 0.0.4
+      ajv: 8.12.0
+      ajv-formats: 2.1.1(ajv@8.12.0)
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      depd: 2.0.0
+      near-abi: 0.1.1
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
   /@near-js/accounts@1.0.3:
     resolution: {integrity: sha512-8/oSXTlKlhJzsoiWw1g8BnenFIZDj6GC7c6g4KM4gSoMlvVEep1QkV3puCl9o4KvH0FQt3o4ykdhSeHRwPTttw==}
     dependencies:
@@ -2045,6 +2109,15 @@ packages:
       - encoding
     dev: false
 
+  /@near-js/crypto@0.0.4:
+    resolution: {integrity: sha512-2mSIVv6mZway1rQvmkktrXAFoUvy7POjrHNH3LekKZCMCs7qMM/23Hz2+APgxZPqoV2kjarSNOEYJjxO7zQ/rQ==}
+    dependencies:
+      '@near-js/types': 0.0.4
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      tweetnacl: 1.0.3
+    dev: false
+
   /@near-js/crypto@1.2.1:
     resolution: {integrity: sha512-iJOHaGKvdudYfR8nEtRhGlgcTEHeVmxMoT0JVXmuP3peG96v/sSnA03CE6MZBeCC8txKAQOffagxE7oU6hJp9g==}
     dependencies:
@@ -2054,6 +2127,13 @@ packages:
       bn.js: 5.2.1
       borsh: 1.0.0
       randombytes: 2.1.0
+    dev: false
+
+  /@near-js/keystores-browser@0.0.4:
+    resolution: {integrity: sha512-bzwClm3jNlWJrb8wqMunP3rrcG1hS3rD58KKhDvHXy8Dtg9VVUgrfr3Csu9oTnjG+rAPZGOynunaoOQVqju/Aw==}
+    dependencies:
+      '@near-js/crypto': 0.0.4
+      '@near-js/keystores': 0.0.4
     dev: false
 
   /@near-js/keystores-browser@0.0.9:
@@ -2070,11 +2150,33 @@ packages:
       '@near-js/keystores': 0.0.9
     dev: false
 
+  /@near-js/keystores@0.0.4:
+    resolution: {integrity: sha512-+vKafmDpQGrz5py1liot2hYSjPGXwihveeN+BL11aJlLqZnWBgYJUWCXG+uyGjGXZORuy2hzkKK6Hi+lbKOfVA==}
+    dependencies:
+      '@near-js/crypto': 0.0.4
+      '@near-js/types': 0.0.4
+    dev: false
+
   /@near-js/keystores@0.0.9:
     resolution: {integrity: sha512-j8ySgVEcm2Gg6zxkSdadNtPlIqhJZdPGfWWM3tPtEoowNS9snhwZn5NRFPrgmX0+MzpF7E091CRcY90MvRVhsg==}
     dependencies:
       '@near-js/crypto': 1.2.1
       '@near-js/types': 0.0.4
+    dev: false
+
+  /@near-js/providers@0.0.6:
+    resolution: {integrity: sha512-PgWCcgDgCAgnyxq2IPZD2vbpQzXt4XK4cN2SbUZsDwJkBaDQEozXMnyShG/Ie2eRoz5aD9dRHpdLDpTieAw5kA==}
+    dependencies:
+      '@near-js/transactions': 0.2.0
+      '@near-js/types': 0.0.4
+      '@near-js/utils': 0.0.4
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      http-errors: 1.7.2
+    optionalDependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@near-js/providers@0.1.0:
@@ -2092,12 +2194,32 @@ packages:
       - encoding
     dev: false
 
+  /@near-js/signers@0.0.4:
+    resolution: {integrity: sha512-xCglo3U/WIGsz/izPGFMegS5Q3PxOHYB8a1E7RtVhNm5QdqTlQldLCm/BuMg2G/u1l1ZZ0wdvkqRTG9joauf3Q==}
+    dependencies:
+      '@near-js/crypto': 0.0.4
+      '@near-js/keystores': 0.0.4
+      js-sha256: 0.9.0
+    dev: false
+
   /@near-js/signers@0.1.1:
     resolution: {integrity: sha512-focJgs04dBUfawMnyGg3yIjaMawuVz2OeLRKC4t5IQDmO4PLfdIraEuwgS7tckMq3GdrJ7nqkwkpSNYpdt7I5Q==}
     dependencies:
       '@near-js/crypto': 1.2.1
       '@near-js/keystores': 0.0.9
       '@noble/hashes': 1.3.3
+    dev: false
+
+  /@near-js/transactions@0.2.0:
+    resolution: {integrity: sha512-ejcYkDz0tdQ40i/7ETV23fL5hp/pIiNXYmh4bNuZ9FjeowBODtlXGLqjG3wZbCygHCirJKilmVi5BtM+rh4ovQ==}
+    dependencies:
+      '@near-js/crypto': 0.0.4
+      '@near-js/signers': 0.0.4
+      '@near-js/types': 0.0.4
+      '@near-js/utils': 0.0.4
+      bn.js: 5.2.1
+      borsh: 0.7.0
+      js-sha256: 0.9.0
     dev: false
 
   /@near-js/transactions@1.1.1:
@@ -2118,6 +2240,15 @@ packages:
       bn.js: 5.2.1
     dev: false
 
+  /@near-js/utils@0.0.4:
+    resolution: {integrity: sha512-mPUEPJbTCMicGitjEGvQqOe8AS7O4KkRCxqd0xuE/X6gXF1jz1pYMZn4lNUeUz2C84YnVSGLAM0o9zcN6Y4hiA==}
+    dependencies:
+      '@near-js/types': 0.0.4
+      bn.js: 5.2.1
+      depd: 2.0.0
+      mustache: 4.0.0
+    dev: false
+
   /@near-js/utils@0.1.0:
     resolution: {integrity: sha512-kOVAXmJzaC8ElJD3RLEoBuqOK+d5s7jc0JkvhyEtbuEmXYHHAy9Q17/YkDcX9tyr01L85iOt66z0cODqzgtQwA==}
     dependencies:
@@ -2126,6 +2257,22 @@ packages:
       bs58: 4.0.0
       depd: 2.0.0
       mustache: 4.0.0
+    dev: false
+
+  /@near-js/wallet-account@0.0.6:
+    resolution: {integrity: sha512-oyxQM6tf2WG4it+8IMu0ZQ6pa4OQhF1o+Q33Rb2+4Mb1Fm+L7MO7PJoCPcveCIFYVPOjSVk0oyoz1KbE3y62gA==}
+    dependencies:
+      '@near-js/accounts': 0.1.3
+      '@near-js/crypto': 0.0.4
+      '@near-js/keystores': 0.0.4
+      '@near-js/signers': 0.0.4
+      '@near-js/transactions': 0.2.0
+      '@near-js/types': 0.0.4
+      '@near-js/utils': 0.0.4
+      bn.js: 5.2.1
+      borsh: 0.7.0
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /@near-js/wallet-account@1.1.0:
@@ -3081,6 +3228,10 @@ packages:
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
     dev: true
 
+  /@types/node@11.11.6:
+    resolution: {integrity: sha512-Exw4yUWMBXM3X+8oqzJNRqZSwUAaS4+7NdvHqQuFi/d+synz++xmX3QIf+BFqneW8N31R8Ky+sikfZUXq07ggQ==}
+    dev: false
+
   /@types/node@16.18.83:
     resolution: {integrity: sha512-TmBqzDY/GeCEmLob/31SunOQnqYE3ZiiuEh1U9o3HqE1E2cqKZQA5RQg4krEguCY3StnkXyDmCny75qyFLx/rA==}
     dev: false
@@ -3427,6 +3578,17 @@ packages:
         optional: true
     dependencies:
       ajv: 8.11.2
+    dev: false
+
+  /ajv-formats@2.1.1(ajv@8.12.0):
+    resolution: {integrity: sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==}
+    peerDependencies:
+      ajv: ^8.0.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
+    dependencies:
+      ajv: 8.12.0
     dev: false
 
   /ajv-keywords@3.5.2(ajv@6.12.6):
@@ -3797,6 +3959,22 @@ packages:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
 
+  /bip39-light@1.0.7:
+    resolution: {integrity: sha512-WDTmLRQUsiioBdTs9BmSEmkJza+8xfJmptsNJjxnoq3EydSa/ZBXT6rm66KoT3PJIRYMnhSKNR7S9YL1l7R40Q==}
+    dependencies:
+      create-hash: 1.2.0
+      pbkdf2: 3.1.2
+    dev: false
+
+  /bip39@3.0.2:
+    resolution: {integrity: sha512-J4E1r2N0tUylTKt07ibXvhpT2c5pyAFgvuA5q1H9uDy6dEGpjV8jmymh3MTYJDLCNbIVClSB9FbND49I6N24MQ==}
+    dependencies:
+      '@types/node': 11.11.6
+      create-hash: 1.2.0
+      pbkdf2: 3.1.2
+      randombytes: 2.1.0
+    dev: false
+
   /bl@4.1.0:
     resolution: {integrity: sha512-1W07cM9gS6DcLperZfFSj+bWLtaPGSOHWhPiGzXmvVJbRLdG82sH/Kn8EtW1VqWVA54AKf2h5k5BbnIbwF3h6w==}
     dependencies:
@@ -3979,6 +4157,13 @@ packages:
   /chrome-trace-event@1.0.3:
     resolution: {integrity: sha512-p3KULyQg4S7NIHixdwbGX+nFHkoBiA4YQmyWtjb8XngSKV124nJmRysgAeujbUVb15vh+RvFUfCPqU7rXk+hZg==}
     engines: {node: '>=6.0'}
+    dev: false
+
+  /cipher-base@1.0.4:
+    resolution: {integrity: sha512-Kkht5ye6ZGmwv40uUDZztayT2ThLQGfnj/T71N/XzeZeo3nf8foyW7zGTsPYkEya3m5f3cAypH+qe7YOrM1U2Q==}
+    dependencies:
+      inherits: 2.0.4
+      safe-buffer: 5.2.1
     dev: false
 
   /class-variance-authority@0.7.0:
@@ -4441,6 +4626,27 @@ packages:
       typescript: 5.3.3
     dev: true
 
+  /create-hash@1.2.0:
+    resolution: {integrity: sha512-z00bCGNHDG8mHAkP7CtT1qVu+bFQUPjYq/4Iv3C3kWjTFV10zIjfSoeqXo9Asws8gwSHDGj/hl2u4OGIjapeCg==}
+    dependencies:
+      cipher-base: 1.0.4
+      inherits: 2.0.4
+      md5.js: 1.3.5
+      ripemd160: 2.0.2
+      sha.js: 2.4.11
+    dev: false
+
+  /create-hmac@1.1.7:
+    resolution: {integrity: sha512-MJG9liiZ+ogc4TzUwuvbER1JRdgvUFSB5+VR/g5h82fGaIRWMWddtKBHi7/sVhfjQZ6SehlyhvQYrcYkaUIpLg==}
+    dependencies:
+      cipher-base: 1.0.4
+      create-hash: 1.2.0
+      inherits: 2.0.4
+      ripemd160: 2.0.2
+      safe-buffer: 5.2.1
+      sha.js: 2.4.11
+    dev: false
+
   /cross-env@7.0.3:
     resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
     engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
@@ -4896,7 +5102,7 @@ packages:
     dependencies:
       confusing-browser-globals: 1.0.11
       eslint: 8.57.0
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       object.assign: 4.1.5
       object.entries: 1.1.7
       semver: 6.3.1
@@ -4914,7 +5120,7 @@ packages:
       '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.3.3)
       eslint: 8.57.0
       eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.29.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
     dev: true
 
   /eslint-config-airbnb@19.0.4(eslint-plugin-import@2.29.1)(eslint-plugin-jsx-a11y@6.8.0)(eslint-plugin-react-hooks@4.6.0)(eslint-plugin-react@7.33.2)(eslint@8.57.0):
@@ -4929,7 +5135,7 @@ packages:
     dependencies:
       eslint: 8.57.0
       eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.29.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
       eslint-plugin-react: 7.33.2(eslint@8.57.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.57.0)
@@ -4988,8 +5194,8 @@ packages:
       eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-config-airbnb-typescript: 17.1.0(@typescript-eslint/eslint-plugin@6.21.0)(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
       eslint-config-prettier: 8.10.0(eslint@8.57.0)
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
+      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
       eslint-plugin-jsx-a11y: 6.8.0(eslint@8.57.0)
       eslint-plugin-prettier: 5.1.3(eslint-config-prettier@8.10.0)(eslint@8.57.0)(prettier@3.2.4)
       eslint-plugin-react: 7.33.2(eslint@8.57.0)
@@ -5037,29 +5243,6 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0):
-    resolution: {integrity: sha512-xgdptdoi5W3niYeuQxKmzVDTATvLYqhpwmykwsh7f6HIOStGWEIL9iqZgQDF9u9OEzrRwR8no5q2VT+bjAujTg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      eslint: '*'
-      eslint-plugin-import: '*'
-    dependencies:
-      debug: 4.3.4
-      enhanced-resolve: 5.15.0
-      eslint: 8.57.0
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      eslint-plugin-import: 2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0)
-      fast-glob: 3.3.2
-      get-tsconfig: 4.7.2
-      is-core-module: 2.13.1
-      is-glob: 4.0.3
-    transitivePeerDependencies:
-      - '@typescript-eslint/parser'
-      - eslint-import-resolver-node
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
   /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
@@ -5090,64 +5273,6 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.3.3)
-      debug: 3.2.7
-      eslint: 8.57.0
-      eslint-import-resolver-node: 0.3.9
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.3.3)
-      debug: 3.2.7
-      eslint: 8.57.0
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.21.0)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0):
     resolution: {integrity: sha512-BbPC0cuExzhiMo4Ff1BTVwHpjjv28C5R+btTOGaCRC7UEz801up0JadwkeSk5Ued6TG34uaczuVuH6qyy5YUxw==}
     engines: {node: '>=4'}
@@ -5168,41 +5293,6 @@ packages:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      hasown: 2.0.1
-      is-core-module: 2.13.1
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.7
-      object.groupby: 1.0.2
-      object.values: 1.1.7
-      semver: 6.3.1
-      tsconfig-paths: 3.15.0
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
-    dev: true
-
-  /eslint-plugin-import@2.29.1(@typescript-eslint/parser@6.21.0)(eslint@8.57.0):
-    resolution: {integrity: sha512-BbPC0cuExzhiMo4Ff1BTVwHpjjv28C5R+btTOGaCRC7UEz801up0JadwkeSk5Ued6TG34uaczuVuH6qyy5YUxw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 6.21.0(eslint@8.57.0)(typescript@5.3.3)
-      array-includes: 3.1.7
-      array.prototype.findlastindex: 1.2.4
-      array.prototype.flat: 1.3.2
-      array.prototype.flatmap: 1.3.2
-      debug: 3.2.7
-      doctrine: 2.1.0
-      eslint: 8.57.0
-      eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.21.0)(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
       hasown: 2.0.1
       is-core-module: 2.13.1
       is-glob: 4.0.3
@@ -5967,6 +6057,15 @@ packages:
     dependencies:
       has-symbols: 1.0.3
 
+  /hash-base@3.1.0:
+    resolution: {integrity: sha512-1nmYp/rhMDiE7AYkDw+lLwlAzz0AntGIe51F3RfFfEqyQ3feY2eI/NcwC6umIQVOASPMsWJLJScWKSSvzL9IVA==}
+    engines: {node: '>=4'}
+    dependencies:
+      inherits: 2.0.4
+      readable-stream: 3.6.2
+      safe-buffer: 5.2.1
+    dev: false
+
   /hasown@2.0.1:
     resolution: {integrity: sha512-1/th4MHjnwncwXsIW6QMzlvYL9kG5e/CpVvLRZe4XPa8TOUNbCELqmvhDmnkNsAjwaG4+I8gJJL0JBvTTLO9qA==}
     engines: {node: '>= 0.4'}
@@ -6127,6 +6226,14 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
+  /is-arguments@1.1.1:
+    resolution: {integrity: sha512-8Q7EARjzEnKpt/PCD7e1cgUS0a6X8u5tdSiMqXhojOdoV9TsMsiO+9VLC5vAmO8N7/GmXn7yjR8qnA6bVAEzfA==}
+    engines: {node: '>= 0.4'}
+    dependencies:
+      call-bind: 1.0.7
+      has-tostringtag: 1.0.2
+    dev: false
+
   /is-array-buffer@3.0.4:
     resolution: {integrity: sha512-wcjaerHw0ydZwfhiKbXJWLDY8A7yV7KhjQOpb83hGgGfId/aQa4TOvwyzn2PuswW2gPCYEL/nEAiSVpdOj1lXw==}
     engines: {node: '>= 0.4'}
@@ -6225,7 +6332,6 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       has-tostringtag: 1.0.2
-    dev: true
 
   /is-glob@4.0.3:
     resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
@@ -6734,6 +6840,10 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: false
 
+  /lodash.isequal@4.5.0:
+    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: false
+
   /lodash.isfunction@3.0.9:
     resolution: {integrity: sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==}
     dev: true
@@ -6891,6 +7001,14 @@ packages:
       supercluster: 8.0.1
       tinyqueue: 2.0.3
       vt-pbf: 3.1.3
+    dev: false
+
+  /md5.js@1.3.5:
+    resolution: {integrity: sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==}
+    dependencies:
+      hash-base: 3.1.0
+      inherits: 2.0.4
+      safe-buffer: 5.2.1
     dev: false
 
   /meow@12.1.1:
@@ -7071,6 +7189,23 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /near-hd-key@1.2.1:
+    resolution: {integrity: sha512-SIrthcL5Wc0sps+2e1xGj3zceEa68TgNZDLuCx0daxmfTP7sFTB3/mtE2pYhlFsCxWoMn+JfID5E1NlzvvbRJg==}
+    dependencies:
+      bip39: 3.0.2
+      create-hmac: 1.1.7
+      tweetnacl: 1.0.3
+    dev: false
+
+  /near-seed-phrase@0.2.0:
+    resolution: {integrity: sha512-NpmrnejpY1AdlRpDZ0schJQJtfBaoUheRfiYtQpcq9TkwPgqKZCRULV5L3hHmLc0ep7KRtikbPQ9R2ztN/3cyQ==}
+    dependencies:
+      bip39-light: 1.0.7
+      bs58: 4.0.1
+      near-hd-key: 1.2.1
+      tweetnacl: 1.0.3
     dev: false
 
   /neo-async@2.6.2:
@@ -7510,6 +7645,17 @@ packages:
       resolve-protobuf-schema: 2.1.0
     dev: false
 
+  /pbkdf2@3.1.2:
+    resolution: {integrity: sha512-iuh7L6jA7JEGu2WxDwtQP1ddOpaJNC4KlDEFfdQajSGgGPNi4OyDc2R7QnbY2bR9QjBVGwgvTdNJZoE7RaxUMA==}
+    engines: {node: '>=0.12'}
+    dependencies:
+      create-hash: 1.2.0
+      create-hmac: 1.1.7
+      ripemd160: 2.0.2
+      safe-buffer: 5.2.1
+      sha.js: 2.4.11
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
@@ -7755,6 +7901,10 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     dev: true
 
+  /qrcode-generator@1.4.4:
+    resolution: {integrity: sha512-HM7yY8O2ilqhmULxGMpcHSF1EhJJ9yBj8gvDEuZ6M+KGJ0YY2hKpnXvRD+hZPLrDVck3ExIGhmPtSdcjC+guuw==}
+    dev: false
+
   /qrcode@1.5.3:
     resolution: {integrity: sha512-puyri6ApkEHYiVl4CFzo1tDkAZ+ATcnbJrJ6RiBM1Fhctdn/ix9MTE3hRph33omisEbC/2fcfemsseiKgBPKZg==}
     engines: {node: '>=10.13.0'}
@@ -7850,6 +8000,18 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       supercluster: 7.1.5
+    dev: false
+
+  /react-qrcode-logo@2.9.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-x9uctB/8kuQ+x7p4V/BRv6qbQV4xYopLcitBuQT3925U/zVFb3bbDUsUZsi7hEKuAX/wRsfhs331FhlPSYCO9Q==}
+    peerDependencies:
+      react: '>=16.4.1'
+      react-dom: '>=16.4.1'
+    dependencies:
+      lodash.isequal: 4.5.0
+      qrcode-generator: 1.4.4
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-remove-scroll-bar@2.3.5(@types/react@18.2.48)(react@18.2.0):
@@ -7970,7 +8132,6 @@ packages:
       inherits: 2.0.4
       string_decoder: 1.3.0
       util-deprecate: 1.0.2
-    dev: true
 
   /readdirp@3.6.0:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
@@ -8149,6 +8310,13 @@ packages:
       glob: 7.2.3
     dev: true
 
+  /ripemd160@2.0.2:
+    resolution: {integrity: sha512-ii4iagi25WusVoiC4B4lq7pbXfAp3D9v5CwfkY33vffw2+pkDjY1D8GaN7spsxvCSx8dkPqOZCEZyfxcmJG2IA==}
+    dependencies:
+      hash-base: 3.1.0
+      inherits: 2.0.4
+    dev: false
+
   /rollup-plugin-terser@7.0.2(rollup@2.79.1):
     resolution: {integrity: sha512-w3iIaU4OxcF52UUXiZNsNeuXIMDvFrr+ZXK6bFZ0Q60qyVfq4uLptoS4bbq3paG3x216eQllFZX7zt6TIImguQ==}
     deprecated: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
@@ -8304,6 +8472,14 @@ packages:
 
   /setprototypeof@1.1.1:
     resolution: {integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==}
+    dev: false
+
+  /sha.js@2.4.11:
+    resolution: {integrity: sha512-QMEp5B7cftE7APOjk5Y6xgrbWu+WkLVQwk8JNjZ8nKRciZaByEW6MubieAiToS7+dwvrjGhH8jRXz3MVd0AYqQ==}
+    hasBin: true
+    dependencies:
+      inherits: 2.0.4
+      safe-buffer: 5.2.1
     dev: false
 
   /sharp@0.33.2:
@@ -8598,7 +8774,6 @@ packages:
     resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==}
     dependencies:
       safe-buffer: 5.2.1
-    dev: true
 
   /stringify-object@3.3.0:
     resolution: {integrity: sha512-rHqiFh1elqCQ9WPLIC8I0Q/g/wj5J1eMkyoiD6eoQApWHP0FtlK7rqnhmabL5VUY9JQCcqwwvlOaSuutekgyrw==}
@@ -8965,6 +9140,10 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
+  /tweetnacl@1.0.3:
+    resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+    dev: false
+
   /type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
@@ -9182,6 +9361,16 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /util@0.12.5:
+    resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}
+    dependencies:
+      inherits: 2.0.4
+      is-arguments: 1.1.1
+      is-generator-function: 1.0.10
+      is-typed-array: 1.1.13
+      which-typed-array: 1.1.14
+    dev: false
 
   /validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
