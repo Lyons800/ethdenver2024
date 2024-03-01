@@ -45,7 +45,7 @@ const Home = () => {
   // if (error) return <div>An error occurred: {error.message}</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center gap-8 text-center">
+    <div className="flex flex-col items-center justify-center gap-8 px-4 text-center">
       {/* <SomeText />
       <CTASection /> */}
       <UpcomingEvents events={eventsData} />

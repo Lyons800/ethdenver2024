@@ -46,8 +46,8 @@ const DiscoverPage = () => {
   const error = false;
   // Component content, including error handling and loading state
   return (
-    <div>
-      <div className="h-32">
+    <div className="p-4">
+      <div className="mb-4 h-[100px] overflow-hidden rounded-lg">
         <MapComponent latitude={null} longitude={null} />
       </div>
 
