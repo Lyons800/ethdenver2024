@@ -2,7 +2,15 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 
-const PassCard = ({ pass }) => {
+interface Pass {
+  index: number;
+  title: string;
+  date: string;
+  logo: string;
+  description: string;
+}
+
+const PassCard = ({ pass }: { pass: Pass }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);

@@ -1,6 +1,5 @@
 'use client';
 
-import { formatDate } from 'date-fns';
 import { TicketIcon } from 'lucide-react';
 import Image from 'next/image';
 
@@ -9,7 +8,15 @@ import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
 
-export function PassSheet({ event }) {
+interface Event {
+  id: string;
+  name: string;
+  image: string;
+  location: string;
+  description: string;
+}
+
+export function PassSheet({ event }: { event: Event }) {
   const isAttending = true;
 
   return (

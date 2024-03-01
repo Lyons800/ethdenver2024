@@ -1,18 +1,23 @@
 'use client';
 
-import { formatDate } from 'date-fns';
-import { Clock, MapPinIcon, ShareIcon, TicketIcon } from 'lucide-react';
+import { Clock, MapPinIcon, ShareIcon } from 'lucide-react';
 import Image from 'next/image';
 
+import MapComponent from './map';
+import { StakeAndMintSheet } from './mint-pass-sheet';
+import { PassSheet } from './pass-sheet';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
-import MapComponent from './map';
-import { StakeAndMintSheet } from './mint-pass-sheet';
-import Link from 'next/link'; // Assuming usage of Next.js Link component
-import { PassSheet } from './pass-sheet';
 
-export function EventSheet({ event }) {
+interface Event {
+  id: string;
+  name: string;
+  image: string;
+  location: string;
+  description: string;
+}
+export function EventSheet({ event }: { event: Event }) {
   const isAttending = true;
 
   return (
@@ -87,7 +92,7 @@ export function EventSheet({ event }) {
           </div>
         ) : (
           <div className="flex w-full justify-center">
-            <StakeAndMintSheet onConfirm={undefined} stakeAmount={undefined} />
+            <StakeAndMintSheet />
           </div>
         )}
       </DrawerContent>
