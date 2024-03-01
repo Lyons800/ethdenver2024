@@ -1,47 +1,24 @@
 'use client';
 
 import { formatDate } from 'date-fns';
-import { Clock, MapPinIcon, ShareIcon, TicketIcon } from 'lucide-react';
+import { TicketIcon } from 'lucide-react';
 import Image from 'next/image';
 
+import { StakeAndMintSheet } from './mint-pass-sheet';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
-import MapComponent from './map';
-import { StakeAndMintSheet } from './mint-pass-sheet';
-import Link from 'next/link'; // Assuming usage of Next.js Link component
-import { PassSheet } from './pass-sheet';
 
-export function EventSheet({ event }) {
+export function PassSheet({ event }) {
   const isAttending = true;
 
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <button
-          type="button"
-          key={event.id}
-          className="flex flex-row items-start rounded-lg border p-4"
-        >
-          <Image
-            src={event.image}
-            alt={event.name}
-            width={60}
-            height={60}
-            className="rounded-md"
-          />
-          <div className="ml-4 flex flex-col items-start">
-            <h3 className="mt-0 font-semibold">{event.name}</h3>
-            <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
-              <Clock size="16" />
-              {/* Placeholder for date formatting */}
-            </p>
-            <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
-              <MapPinIcon size="16" />
-              {event.location}
-            </p>
-          </div>
-        </button>
+        <Button variant="outline" className="mt-4 w-full">
+          <TicketIcon size="16" />
+          View Ticket
+        </Button>
       </DrawerTrigger>
 
       <DrawerContent
@@ -62,7 +39,7 @@ export function EventSheet({ event }) {
           <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
             Today at 20:30 - 21:30
           </p>
-          <Button
+          {/* <Button
             variant="outline"
             className="mt-4 w-full justify-center gap-2"
           >
@@ -77,17 +54,20 @@ export function EventSheet({ event }) {
             <MapComponent latitude={null} longitude={null} />
           </div>
           <p className="mt-4">{event.description}</p>
-          <div className="space-y-4" />
+          <div className="space-y-4" /> */}
         </ScrollArea>
 
         {/* Conditional Rendering for Registration or Ticket Link */}
         {isAttending ? (
           <div className="flex w-full justify-center">
-            <PassSheet event={event} />
+            <Button variant="outline" className="mt-4 w-full">
+              <TicketIcon size="16" />
+              View Ticket
+            </Button>
           </div>
         ) : (
           <div className="flex w-full justify-center">
-            <StakeAndMintSheet onConfirm={undefined} stakeAmount={undefined} />
+            <StakeAndMintSheet />
           </div>
         )}
       </DrawerContent>
