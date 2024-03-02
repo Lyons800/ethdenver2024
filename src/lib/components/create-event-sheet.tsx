@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console */
 
@@ -46,6 +47,7 @@ export function CreateEventSheet() {
     latitude: null,
     longitude: null,
   });
+  const [eventImageBase64, setEventImageBase64] = useState<string | null>(null);
 
   interface EventDetails {
     name: string;
@@ -55,6 +57,21 @@ export function CreateEventSheet() {
       latitude: number | null;
       longitude: number | null;
     };
+    image: string | null; // Base64 encoded image
+  }
+
+  function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (!file) {
+      setEventImageBase64(null);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      setEventImageBase64(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   }
 
   const createEventContract = async (eventDetails: EventDetails) => {
@@ -70,12 +87,13 @@ export function CreateEventSheet() {
           latitude: eventDetails.coordinates.latitude,
           longitude: eventDetails.coordinates.longitude,
         }),
+        image: eventDetails.image, // Include the base64 image data
         // Add other event details as needed
       };
 
       // Call the factory contract's method to deploy a new event contract
       // with the event metadata
-      //@ts-ignore
+      // @ts-ignore
       const newContractDetails = await factoryContract.new({
         owner_id: 'ethprince.testnet', // Specify the owner of the new contract
         metadata: eventMetadata, // Pass the prepared metadata
@@ -150,7 +168,12 @@ export function CreateEventSheet() {
                     SVG, PNG, JPG or GIF (MAX. 800x400px)
                   </p>
                 </div>
-                <input id="dropzone-file" type="file" className="hidden" />
+                <input
+                  id="dropzone-file"
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileChange}
+                />
               </label>
             </div>
             <div>
@@ -199,6 +222,7 @@ export function CreateEventSheet() {
                     description: eventDescription,
                     date: eventDate,
                     coordinates, // Assuming this state contains the latitude and longitude
+                    image: eventImageBase64, // Add this line
                   })
                 }
               >

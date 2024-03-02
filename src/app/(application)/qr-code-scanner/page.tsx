@@ -1,22 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { QrReader } from 'react-qr-reader';
 
 export default function Test() {
   const [data, setData] = useState('No result');
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex h-screen flex-col items-center justify-center">
       <div className="w-full max-w-md px-4">
         <QrReader
           onResult={(result, error) => {
-            if (!!result) {
-              //@ts-ignore
+            if (result) {
+              // @ts-ignore
               setData(result?.text);
             }
 
-            if (!!error) {
+            if (error) {
               console.info(error);
             }
           }}
@@ -24,7 +24,11 @@ export default function Test() {
           videoContainerStyle={{ borderRadius: '12px', overflow: 'hidden' }}
           videoStyle={{ width: '100%', height: 'auto' }} // This ensures the video is responsive and maintains aspect ratio
           ViewFinder={({ width, height }) => (
-            <svg width={width} height={height} style={{ position: 'absolute', top: 0, left: 0 }}>
+            <svg
+              width={width}
+              height={height}
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            >
               <rect
                 x="0"
                 y="0"

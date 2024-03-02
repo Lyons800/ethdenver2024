@@ -13,7 +13,7 @@ import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
 
 export function EventSheet({ event }: { event: Event }) {
-  const isAttending = true;
+  const isAttending = false;
 
   return (
     <Drawer>

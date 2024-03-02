@@ -27,21 +27,16 @@ export default function InitContractButton() {
       // const accountId = wallet.accountId;
       // const result = await nftSupplyForOwner(accountId);
 
-      // const result = await nftToken('1')
+      const result = await wallet.viewMethod({
+        contractId: 'ethprince.testnet',
+        method: 'nft_total_supply',
+        args: {},
+      });
 
-      // const metadata = {
-      //   token_id: '0',
-      //   receiver_id: "'$ID'",
-      //   token_metadata: {
-      //     title: 'Some Art',
-      //     description: 'My NFT media',
-      //     media:
-      //       'https://bafkreiabag3ztnhe5pg7js4bj6sxuvkz3sdf76cjvcuqjoidvnfjz7vwrq.ipfs.dweb.link/',
-      //     copies: 1,
-      //   },
-      // };
+      console.log('result', result);
 
-      // const result = await nftMint('3', metadata, wallet.accountId);
+      //  const result =  await contract.nft_total_supply()
+      //   console.log('result', result);
 
       const result = await nftTokens('1');
 
