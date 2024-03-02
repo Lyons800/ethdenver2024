@@ -12,8 +12,55 @@ import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
 
+import { useWallet } from '@/context/wallet-context';
+
 export function EventSheet({ event }: { event: Event }) {
   const isAttending = false;
+  const { wallet } = useWallet();
+
+  const checkPasses = async () => {
+    try {
+      const result = await wallet.readMethod({
+        contractId: 'ethprince.testnet',
+        method: 'nft_mint',
+        args: {
+          token_id, // Use the randomly generated token ID
+          metadata: {
+            title: 'Nearcon 2024 Pass',
+            description: `Pass to access Nearcon 2024`,
+          },
+          receiver_id: wallet.accountId,
+          perpetual_royalties: {
+            'ethprince.testnet': 1000,
+          },
+        },
+        deposit: '6770000000000000000000000',
+      });
+
+      console.log('result', result);
+
+      // //@ts-ignore
+      // const result = await contract.nft_mint({
+      //   token_id,
+      //   metadata,
+      //   receiver_id,
+      //   perpetual_royalties:
+      //     Object.keys(perpetual_royalties).length > 0
+      //       ? perpetual_royalties
+      //       : null,
+      // });
+
+      toast('Contract initialized successfully with name:', {
+        description: `The contract is now ready for interaction. `,
+      });
+      // console.log('Contract initialized:', contract);
+    } catch (error: any) {
+      toast('Error initializing contract', {
+        description: `An error occurred: ${error.message}`,
+      });
+      console.error('Error initializing contract:', error);
+    }
+  };
 
   return (
     <Drawer>
@@ -87,7 +134,7 @@ export function EventSheet({ event }: { event: Event }) {
           </div>
         ) : (
           <div className="flex w-full justify-center">
-            <StakeAndMintSheet event = {event}/>
+            <StakeAndMintSheet />
           </div>
         )}
       </DrawerContent>

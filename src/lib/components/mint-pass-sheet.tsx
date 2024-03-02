@@ -12,7 +12,7 @@ import { useWallet } from '@/context/wallet-context';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
-export const StakeAndMintSheet = ({ event }: { event: Event[] }) => {
+export const StakeAndMintSheet = () => {
   const { wallet } = useWallet();
 
   // Dummy function for slide end handling. Replace with your actual logic.
@@ -31,8 +31,8 @@ export const StakeAndMintSheet = ({ event }: { event: Event[] }) => {
         args: {
           token_id, // Use the randomly generated token ID
           metadata: {
-            title: event.name,
-            description: `Pass to access ${event.name}`,
+            title: 'Nearcon 2024 Pass',
+            description: `Pass to access Nearcon 2024`,
           },
           receiver_id: wallet.accountId,
           perpetual_royalties: {
