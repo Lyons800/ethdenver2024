@@ -1,3 +1,5 @@
+/* eslint-disable sonarjs/no-duplicate-string */
+
 'use client';
 
 import { useWallet } from '@/context/wallet-context';

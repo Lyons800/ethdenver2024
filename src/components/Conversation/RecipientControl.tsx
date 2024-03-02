@@ -18,7 +18,7 @@ const RecipientControl = (): JSX.Element => {
   const { resolveName, lookupAddress } = useWalletProvider();
   const client = useAppStore((state) => state.client);
   const router = useRouter();
-  const pathname = usePathname()
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const recipientWalletAddr = searchParams.get('recipientWalletAddr');
   const recipientWalletAddress = Array.isArray(recipientWalletAddr)
@@ -98,7 +98,7 @@ const RecipientControl = (): JSX.Element => {
         value: string;
       };
       if (pathname !== '/xmtp-chat/dm') {
-        router.push('/xmtp-chat/dm');
+        router.push(pathname);
       }
       if (isEns(data.value) || is0xAddress(data.value)) {
         handleSubmit(e, data.value);
