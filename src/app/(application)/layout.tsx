@@ -1,4 +1,3 @@
-
 import type { Metadata, Viewport } from 'next';
 
 import Layout from '@/lib/layout';
@@ -6,10 +5,8 @@ import { fontSans } from '@/lib/styles/fonts';
 import { cn } from '@/lib/styles/utils';
 
 import '@/lib/styles/globals.css';
-import { useEffect } from 'react';
 
 import { Providers } from '@/lib/components/providers';
-
 import { WalletProvider } from '@/context/wallet-context'; // Adjust the import path as needed
 
 const APP_NAME = 'nextarter-tailwind';

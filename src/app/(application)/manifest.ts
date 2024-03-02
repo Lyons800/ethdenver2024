@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next';
+import type MetadataRoute from 'next';
 
 const manifest = (): MetadataRoute.Manifest => ({
   short_name: 'nextarter-tailwind',
