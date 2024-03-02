@@ -8,11 +8,15 @@ import React, { useState, useEffect } from 'react';
 import getConfig from '../../config'; // Adjust the import path as needed
 import { Wallet } from '../../near/near-wallet'; // Adjust the import path according to your project structure
 
-const SignInButton = () => {
-  const [wallet, setWallet] = useState(null);
-  const [isSignedIn, setIsSignedIn] = useState(false);
+import { useWallet } from '@/context/wallet-context'; // Adjust the import path as needed
 
-  const config = getConfig(process.env.NODE_ENV);
+const SignInButton = () => {
+  // const [wallet, setWallet] = useState(null);
+  // const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const { wallet, setWallet, isSignedIn, setIsSignedIn } = useWallet();
+
+  const config = getConfig('testnet');
 
   // Initialize the Wallet instance and check sign-in status on component mount
   useEffect(() => {
@@ -20,12 +24,13 @@ const SignInButton = () => {
       const walletInstance = new Wallet({
         createAccessKeyFor: config.contractName,
         network: 'testnet',
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any); // Or 'mainnet', depending on your needs
       const signedIn = await walletInstance.startUp();
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setWallet(walletInstance as any);
       setIsSignedIn(signedIn);
+      console.log('wallet', walletInstance);
 
       if (signedIn) {
         const keystore = localStorage.getItem(
@@ -54,6 +59,11 @@ const SignInButton = () => {
     deleteCookie('near-function-key');
   };
 
+  // Function to log the wallet state
+  const logWalletState = () => {
+    console.log(wallet);
+  };
+
   return (
     <div>
       {isSignedIn ? (
@@ -63,6 +73,8 @@ const SignInButton = () => {
         // eslint-disable-next-line react/button-has-type
         <button onClick={handleSignIn}>Sign In with NEAR Wallet</button>
       )}
+      {/* Button to log the wallet state */}
+      <button onClick={logWalletState}>Log Wallet State</button>
     </div>
   );
 };

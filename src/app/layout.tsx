@@ -1,3 +1,4 @@
+
 import type { Metadata, Viewport } from 'next';
 
 import Layout from '@/lib/layout';
@@ -8,6 +9,8 @@ import '@/lib/styles/globals.css';
 import { useEffect } from 'react';
 
 import { Providers } from '@/lib/components/providers';
+
+import { WalletProvider } from '@/context/wallet-context'; // Adjust the import path as needed
 
 const APP_NAME = 'nextarter-tailwind';
 
@@ -59,7 +62,9 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       >
         <Layout>
           <Providers>
-            <div className="flex-1">{children}</div>
+            <WalletProvider>
+              <div className="flex-1">{children}</div>
+            </WalletProvider>
           </Providers>
         </Layout>
       </body>
