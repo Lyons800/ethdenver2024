@@ -44,7 +44,8 @@ const eventsData = [
     id: '5',
     name: 'Nearcon 2024',
     dateTime: '2024-06-10T19:00:00',
-    image: '/public/nearcon-2024.webp',
+    image:
+      'https://cdn.eventyco.com/images/77f40341-2cde-4c30-90e8-14dbbc2f463c.png',
     location: 'Lisbon, Portugal',
   },
 ];
