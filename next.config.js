@@ -11,4 +11,7 @@ module.exports = withPWA({
   eslint: {
     dirs: ['src'],
   },
+  images: {
+    domains: ['images.unsplash.com', 'via.placeholder.com'],
+  },
 });

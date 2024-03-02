@@ -20,8 +20,10 @@ const SignInButton = () => {
       const walletInstance = new Wallet({
         createAccessKeyFor: config.contractName,
         network: 'testnet',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any); // Or 'mainnet', depending on your needs
       const signedIn = await walletInstance.startUp();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setWallet(walletInstance as any);
       setIsSignedIn(signedIn);
 

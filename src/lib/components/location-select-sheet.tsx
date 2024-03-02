@@ -49,9 +49,9 @@ export function LocationSelectSheet({
     <Drawer>
       <DrawerTrigger asChild>
         <Input
-          value={selectedAddress}
-          onChange={(e) => onAddressSelect(e.target.value)}
           placeholder="Choose Location"
+          value={selectedAddress || 'Choose location'}
+          onChange={(e) => onAddressSelect(e.target.value)}
         />
       </DrawerTrigger>
       <DrawerContent

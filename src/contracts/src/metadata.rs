@@ -5,7 +5,7 @@ pub type TokenId = String;
 #[serde(crate = "near_sdk::serde")]
 pub struct Payout {
     pub payout: HashMap<AccountId, U128>,
-}
+} 
 
 #[derive(BorshDeserialize, BorshSerialize, Serialize, Deserialize, Clone)]
 #[serde(crate = "near_sdk::serde")]
@@ -49,7 +49,7 @@ pub struct Token {
     pub next_approval_id: u64,
 }
 
-//The Json token is what will be returned from view calls.
+//The Json token is what will be returned from view calls. 
 #[derive(Serialize, Deserialize)]
 #[serde(crate = "near_sdk::serde")]
 pub struct JsonToken {

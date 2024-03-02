@@ -1,12 +1,12 @@
 use crate::*;
-use near_sdk::ext_contract;
+use near_sdk::{ext_contract};
 
 pub trait NonFungibleTokenCore {
     //approve an account ID to transfer a token on your behalf
     fn nft_approve(&mut self, token_id: TokenId, account_id: AccountId, msg: Option<String>);
 
     //check if the passed in account has access to approve the token ID
-    fn nft_is_approved(
+	  fn nft_is_approved(
         &self,
         token_id: TokenId,
         approved_account_id: AccountId,
@@ -95,7 +95,7 @@ impl NonFungibleTokenCore for Contract {
 }
 
     //check if the passed in account has access to approve the token ID
-    fn nft_is_approved(
+	  fn nft_is_approved(
         &self,
         token_id: TokenId,
         approved_account_id: AccountId,
@@ -123,7 +123,7 @@ impl NonFungibleTokenCore for Contract {
         }
     }
 
-    //revoke a specific account from transferring the token on your behalf
+    //revoke a specific account from transferring the token on your behalf 
     #[payable]
     fn nft_revoke(&mut self, token_id: TokenId, account_id: AccountId) {
         //assert that the user attached exactly 1 yoctoNEAR for security reasons
