@@ -21,23 +21,26 @@ export const StakeAndMintSheet = () => {
 
   const createPass = async () => {
     try {
-      const result = await wallet.callMethod({
-        contractId: 'ethprince.testnet',
-        method: 'nft_mint',
-        args: {
-          token_id: '1',
-          metadata: {
-            title: 'Event Pass',
-            description: 'Pass to access the event',
-            media: 'https://example.com/image.jpg',
+      const randomNumber = Math.floor(Math.random() * 1000);
+      const result = await wallet
+        .callMethod({
+          contractId: 'ethprince.testnet',
+          method: 'nft_mint',
+          args: {
+            token_id: randomNumber.toString(),
+            metadata: {
+              title: 'Event Pass',
+              description: 'Pass to access the event',
+              media: 'https://example.com/image.jpg',
+            },
+            receiver_id: wallet.accountId,
+            perpetual_royalties: {
+              'ethprince.testnet': 1000,
+            },
           },
-          receiver_id: wallet.accountId,
-          perpetual_royalties: {
-            'ethprince.testnet': 1000,
-          },
-        },
-        deposit: '6770000000000000000000000',
-      });
+          deposit: '6770000000000000000000000',
+        })
+        .toString();
 
       console.log('result', result);
 
