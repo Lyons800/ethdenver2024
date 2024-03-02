@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import AddressInput from '../AddressInput';
 import { isEns, getAddressFromPath, is0xAddress } from '../helpers';
 import { useAppStore } from '../store/app';
@@ -18,6 +18,7 @@ const RecipientControl = (): JSX.Element => {
   const { resolveName, lookupAddress } = useWalletProvider();
   const client = useAppStore((state) => state.client);
   const router = useRouter();
+  const pathname = usePathname()
   const searchParams = useSearchParams();
   const recipientWalletAddr = searchParams.get('recipientWalletAddr');
   const recipientWalletAddress = Array.isArray(recipientWalletAddr)
@@ -96,8 +97,8 @@ const RecipientControl = (): JSX.Element => {
       const data = e.target as typeof e.target & {
         value: string;
       };
-      if (router.pathname !== '/dm') {
-        router.push('/dm');
+      if (pathname !== '/xmtp-chat/dm') {
+        router.push('/xmtp-chat/dm');
       }
       if (isEns(data.value) || is0xAddress(data.value)) {
         handleSubmit(e, data.value);
