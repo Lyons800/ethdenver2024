@@ -32,6 +32,8 @@ export const StakeAndMintSheet = () => {
       };
 
       // Adjust the call to match the `nft_mint` function's expected parameters
+
+      //@ts-ignore
       const result = await contract.nft_mint({
         token_id,
         metadata,
