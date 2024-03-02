@@ -2,6 +2,7 @@
 import * as nearAPI from 'near-api-js';
 import getConfig from '@/config';
 
+
 export async function initNearContract(env) {
   const config = getConfig(env);
 

@@ -47,7 +47,17 @@ export function CreateEventSheet() {
     longitude: null,
   });
 
-  const createEventContract = async (eventDetails) => {
+  interface EventDetails {
+    name: string;
+    description: string;
+    date: string;
+    coordinates: {
+      latitude: number | null;
+      longitude: number | null;
+    };
+  }
+
+  const createEventContract = async (eventDetails: EventDetails) => {
     try {
       const factoryContract = await initNearContract('testnet');
 
@@ -65,6 +75,7 @@ export function CreateEventSheet() {
 
       // Call the factory contract's method to deploy a new event contract
       // with the event metadata
+      //@ts-ignore
       const newContractDetails = await factoryContract.new({
         owner_id: 'ethprince.testnet', // Specify the owner of the new contract
         metadata: eventMetadata, // Pass the prepared metadata

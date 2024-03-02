@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 'use client';
 
 import { initNearContract } from '@/near/near-contract-helper';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
-export const StakeAndMintSheet = ({ eventId }) => {
+export const StakeAndMintSheet = () => {
   // Dummy function for slide end handling. Replace with your actual logic.
   // const handleSlideEnd = () => {
   //   // console.log('Slide action confirmed');
@@ -19,9 +21,9 @@ export const StakeAndMintSheet = ({ eventId }) => {
       const token_id = '21'; // Unique token ID for the NFT
       const receiver_id = 'ethprince.testnet'; // The account that will receive the NFT
       const metadata = {
-        event_id: eventId, // Use eventId as the title in metadata
-        title: eventName, // Use eventName as the title in metadata
-        description: eventDescription, // Event description
+        event_id: null, // Use eventId as the title in metadata
+        title: null, // Use eventName as the title in metadata
+        description: null, // Event description
         // Add other metadata fields as needed
       };
       const perpetual_royalties = {
