@@ -34,9 +34,13 @@ export const StakeAndMintSheet = () => {
             title: 'Nearcon 2024 Pass',
             description: `Pass to access Nearcon 2024`,
           },
-          deposit: '6770000000000000000000000',
-        })
-        .toString();
+          receiver_id: wallet.accountId,
+          perpetual_royalties: {
+            'ethprince.testnet': 1000,
+          },
+        },
+        deposit: '6770000000000000000000000',
+      });
 
       console.log('result', result);
 
