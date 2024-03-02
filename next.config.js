@@ -12,7 +12,11 @@ module.exports = withPWA({
     dirs: ['src'],
   },
   images: {
-    domains: ['images.unsplash.com', 'via.placeholder.com'],
+    domains: [
+      'images.unsplash.com',
+      'via.placeholder.com',
+      'cdn.eventyco.com',
+    ],
   },
   // webpack: (config, options) => {
   //   config.experiments = {

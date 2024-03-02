@@ -32,6 +32,13 @@ const eventsNearMe = [
     image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     location: 'Denver, Colorado',
   },
+  {
+    id: '4',
+    name: 'Nearcon 2024',
+    dateTime: '2024-06-10T19:00:00',
+    image: '/public/near.png',
+    location: 'Lisbon, Portugal',
+  },
 ];
 
 const DiscoverPage = () => {

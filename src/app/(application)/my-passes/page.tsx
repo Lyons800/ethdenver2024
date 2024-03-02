@@ -50,6 +50,13 @@ const passes = [
     description: 'This is your pass for Event 1.',
     logo: '/path/to/event1/logo.png',
   },
+  {
+    id: 1,
+    title: 'Nearcon 2024',
+    date: '2024-03-01',
+    description: 'This is your pass for Event 1.',
+    logo: '/path/to/event1/logo.png',
+  },
   // Add more passes as needed
 ];
 
