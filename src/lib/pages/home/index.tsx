@@ -36,6 +36,13 @@ const eventsData = [
     image: 'https://via.placeholder.com/150',
     location: 'Denver, Colorado',
   },
+  {
+    id: '5',
+    name: 'Nearcon 2024',
+    dateTime: '2024-06-10T19:00:00',
+    image: '/public/nearcon-2024.webp',
+    location: 'Lisbon, Portugal',
+  },
 ];
 
 const Home = () => {
