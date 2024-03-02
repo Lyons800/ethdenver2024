@@ -43,7 +43,7 @@
     "@tanstack/react-query": "^5.24.1",
     "@types/lodash.debounce": "^4.0.9",
     "@vercel/kv": "^1.0.1",
-    "ai": "^3.0.0",
+    "ai": "^3.0.2",
     "axios": "^1.6.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
@@ -56,6 +56,7 @@
     "mapbox-gl": "^3.1.2",
     "nanoid": "^5.0.6",
     "near-api-js": "^3.0.3",
+    "near-wallet-selector": "^2.1.0",
     "next": "^14.1.0",
     "next-pwa": "^5.6.0",
     "next-seo": "^6.4.0",
@@ -85,7 +86,7 @@
     "vaul": "^0.9.0",
     "zod": "^3.22.4"
   },
-  "packageManager": "pnpm@7.25.0",
+  "packageManager": "pnpm@7.26.0",
   "devDependencies": {
     "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.0",
