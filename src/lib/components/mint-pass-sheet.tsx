@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -5,13 +6,14 @@
 
 import { toast } from 'sonner';
 
+import type { Event } from '../types';
 import { useWallet } from '@/context/wallet-context';
 
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
-export const StakeAndMintSheet = () => {
-  const { wallet, setWallet, isSignedIn, setIsSignedIn } = useWallet();
+export const StakeAndMintSheet = ({ event }: { event: Event[] }) => {
+  const { wallet } = useWallet();
 
   // Dummy function for slide end handling. Replace with your actual logic.
   // const handleSlideEnd = () => {
@@ -21,15 +23,16 @@ export const StakeAndMintSheet = () => {
 
   const createPass = async () => {
     try {
+      const token_id = Math.floor(Math.random() * 1000000).toString();
+
       const result = await wallet.callMethod({
         contractId: 'ethprince.testnet',
         method: 'nft_mint',
         args: {
-          token_id: '1',
+          token_id, // Use the randomly generated token ID
           metadata: {
-            title: 'Event Pass',
-            description: 'Pass to access the event',
-            media: 'https://example.com/image.jpg',
+            title: event.name,
+            description: `Pass to access ${event.name}`,
           },
           receiver_id: wallet.accountId,
           perpetual_royalties: {
