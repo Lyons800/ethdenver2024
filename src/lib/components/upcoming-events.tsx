@@ -2,9 +2,15 @@
 
 /* eslint-disable no-nested-ternary */
 
+import type { Event } from '../types';
+
 import { EventSheet } from './event-sheet';
 
-const UpcomingEvents = ({ events }) => {
+interface UpcomingEventsProps {
+  events: Event[]; // This specifies that `events` is an array of Event objects
+}
+
+const UpcomingEvents: React.FC<UpcomingEventsProps> = ({ events }) => {
   return (
     <div className="w-full">
       <h2 className="mb-4 text-2xl font-bold">My Upcoming Events</h2>
