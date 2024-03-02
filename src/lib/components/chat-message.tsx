@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unstable-nested-components */
@@ -57,25 +58,31 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
               children,
               ...props
             }: CodeComponentProps) {
-              if (children.length) {
-                if (children[0] == '▍') {
-                  return (
+              if (!children) return null;
+              let processedChildren = children;
+
+              // Check if children is a string and perform your operations
+              if (typeof children === 'string') {
+                // Now safe to check for specific string content
+                if (children.startsWith('`▍`')) {
+                  processedChildren = (
                     <span className="mt-1 animate-pulse cursor-default">▍</span>
                   );
+                } else {
+                  // Replace '`▍`' with '▍' in the string
+                  processedChildren = children.replace('`▍`', '▍');
                 }
-
-                children[0] = (children[0] as string).replace('`▍`', '▍');
               }
-
-              const match = /language-(\w+)/.exec(className || '');
 
               if (inline) {
                 return (
                   <code className={className} {...props}>
-                    {children}
+                    {processedChildren}
                   </code>
                 );
               }
+
+              const match = /language-(\w+)/.exec(className || '');
 
               return (
                 <CodeBlock
