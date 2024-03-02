@@ -1,4 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
+
 'use client';
 
 import PassCard from './pass-card';
