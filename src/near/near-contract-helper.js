@@ -17,8 +17,26 @@ export async function initNearContract(env) {
     await near.account(config.contractName),
     config.contractName,
     {
-      viewMethods: ['get_name', 'get_members', 'unread_messages', 'get_messages', 'channel_info', 'get_groups', 'created_at'],
-      changeMethods: ['join', 'ping', 'create_group', 'join_group', 'leave_group', 'group_invite', 'send_message', 'read_message', 'toggle_reaction'],
+      viewMethods: [
+        'get_name',
+        'get_members',
+        'unread_messages',
+        'get_messages',
+        'channel_info',
+        'get_groups',
+        'created_at',
+      ],
+      changeMethods: [
+        'join',
+        'ping',
+        'create_group',
+        'join_group',
+        'leave_group',
+        'group_invite',
+        'send_message',
+        'read_message',
+        'toggle_reaction',
+      ],
     }
   );
 

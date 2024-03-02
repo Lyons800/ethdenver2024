@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 'use client';
 
 import { PlusCircleIcon } from 'lucide-react';
@@ -12,7 +14,7 @@ import { Label } from './ui/label';
 import { ScrollArea } from './ui/scroll-area';
 import { Textarea } from './ui/textarea';
 
-async function geocodeAddress(address) {
+async function geocodeAddress(address: string | number | boolean) {
   const mapboxToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN;
   const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxToken}`;
 
@@ -58,9 +60,13 @@ export function CreateEventSheet() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button size="icon" className="text-normal flex flex-col text-sm">
+        <Button
+          size="icon"
+          variant="ghost"
+          className="flex flex-col space-y-1 text-xs font-normal"
+        >
           <PlusCircleIcon size={18} />
-          Create Event
+          <div>Create Event</div>
         </Button>
       </DrawerTrigger>
 
@@ -129,11 +135,13 @@ export function CreateEventSheet() {
                 onAddressSelect={setSelectedAddress}
               />
               <div className="h-[250px] w-full overflow-hidden rounded-lg">
-                <MapComponent
-                  latitude={coordinates.latitude}
-                  longitude={coordinates.longitude}
-                  token={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
-                />
+                {coordinates.latitude !== null &&
+                  coordinates.longitude !== null && (
+                    <MapComponent
+                      latitude={coordinates.latitude}
+                      longitude={coordinates.longitude}
+                    />
+                  )}
               </div>
             </div>
             <div className="flex w-full justify-center">

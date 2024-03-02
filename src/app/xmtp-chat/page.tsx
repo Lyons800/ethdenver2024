@@ -1,55 +1,78 @@
-import { useSendMessage } from "@xmtp/react-sdk";
-import type { Conversation } from "@xmtp/react-sdk";
-import { useCallback, useState } from "react";
+'use client';
+import Head from 'next/head'
+import { NavigationView, ConversationView } from './Views'
+import { RecipientControl } from './Conversation'
+// import NewMessageButton from './NewMessageButton'
+// import NavigationPanel from './NavigationPanel'
+import XmtpInfoPanel from './XmtpInfoPanel'
+// import UserMenu from './UserMenu'
+import React, { useCallback } from 'react'
+import { useAppStore } from './store/app'
+import useInitXmtpClient from './hooks/useInitXmtpClient'
+import useListConversations from './hooks/useListConversations'
+import useWalletProvider from './hooks/useWalletProvider'
 
-export const SendMessage: React.FC<{ conversation: CachedConversation }> = ({
-  conversation,
-}) => {
-  const [peerAddress, setPeerAddress] = useState("");
-  const [message, setMessage] = useState("");
-  const [isSending, setIsSending] = useState(false);
-  const { sendMessage } = useSendMessage();
+const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+  const client = useAppStore((state) => state.client)
+  const { initClient } = useInitXmtpClient()
+  useListConversations()
+  const walletAddress = useAppStore((state) => state.address)
+  const signer = useAppStore((state) => state.signer)
 
-  const handleAddressChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setPeerAddress(e.target.value);
-    },
-    [],
-  );
+  const { connect: connectWallet, disconnect: disconnectWallet } =
+    useWalletProvider()
 
-  const handleMessageChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
-      setMessage(e.target.value);
-    },
-    [],
-  );
+  const handleDisconnect = useCallback(async () => {
+    await disconnectWallet()
+  }, [disconnectWallet])
 
-  const handleSendMessage = useCallback(
-    async (e: React.FormEvent) => {
-      e.preventDefault();
-      if (peerAddress && isValidAddress(peerAddress) && message) {
-        setIsLoading(true);
-        await sendMessage(conversation, message);
-        setIsLoading(false);
-      }
-    },
-    [message, peerAddress, sendMessage],
-  );
+  const handleConnect = useCallback(async () => {
+    await connectWallet()
+    signer && (await initClient(signer))
+  }, [connectWallet, initClient, signer])
 
   return (
-    <form onSubmit={handleSendMessage}>
-      <input
-        name="addressInput"
-        type="text"
-        onChange={handleAddressChange}
-        disabled={isSending}
-      />
-      <input
-        name="messageInput"
-        type="text"
-        onChange={handleMessageChange}
-        disabled={isSending}
-      />
-    </form>
-  );
-};
+    <>
+      <Head>
+        <title>Chat via XMTP</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
+      </Head>
+      <div>
+        {/* <NavigationView>
+          <aside className="flex w-full md:w-84 flex-col flex-grow fixed inset-y-0">
+            <div className="flex flex-col flex-grow md:border-r md:border-gray-200 bg-white overflow-y-auto">
+              <div className="max-h-16 min-h-[4rem] bg-p-600 flex items-center justify-between flex-shrink-0 px-4">
+                <Link href="/" passHref={true}>
+                  <img className="h-8 w-auto" src="/xmtp-icon.png" alt="XMTP" />
+                </Link>
+                {walletAddress && client && <NewMessageButton />}
+              </div>
+              <NavigationPanel onConnect={handleConnect} />
+              <UserMenu
+                onConnect={handleConnect}
+                onDisconnect={handleDisconnect}
+              />
+            </div>
+          </aside>
+        </NavigationView> */}
+        <ConversationView>
+          {walletAddress && client ? (
+            <>
+              <div className="flex bg-zinc-50 border-b border-gray-200 md:bg-white md:border-0 max-h-16 min-h-[4rem]">
+                <RecipientControl />
+              </div>
+              {children}
+            </>
+          ) : (
+            <XmtpInfoPanel onConnect={handleConnect} />
+          )}
+        </ConversationView>
+      </div>
+    </>
+  )
+}
+
+export default Layout
