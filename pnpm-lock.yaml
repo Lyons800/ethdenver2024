@@ -92,6 +92,9 @@ dependencies:
   framer-motion:
     specifier: ^11.0.8
     version: 11.0.8(react-dom@18.2.0)(react@18.2.0)
+  install:
+    specifier: ^0.13.0
+    version: 0.13.0
   lodash.debounce:
     specifier: ^4.0.8
     version: 4.0.8
