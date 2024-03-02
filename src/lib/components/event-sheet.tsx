@@ -13,54 +13,36 @@ import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
 
 import { useWallet } from '@/context/wallet-context';
+import { useEffect, useState } from 'react';
 
 export function EventSheet({ event }: { event: Event }) {
-  const isAttending = false;
   const { wallet } = useWallet();
+  const [isAttending, setIsAttending] = useState(null);
 
-  const checkPasses = async () => {
+
+  const fetchUserNFTs = async () => {
     try {
-      const result = await wallet.readMethod({
+      const nfts = await wallet.readMethod({
         contractId: 'ethprince.testnet',
-        method: 'nft_mint',
-        args: {
-          token_id, // Use the randomly generated token ID
-          metadata: {
-            title: 'Nearcon 2024 Pass',
-            description: `Pass to access Nearcon 2024`,
-          },
-          receiver_id: wallet.accountId,
-          perpetual_royalties: {
-            'ethprince.testnet': 1000,
-          },
-        },
-        deposit: '6770000000000000000000000',
+        method: 'nft_tokens_for_owner',
+        args: { account_id: wallet.accountId },
       });
-
-      console.log('result', result);
-
-      // //@ts-ignore
-      // const result = await contract.nft_mint({
-      //   token_id,
-      //   metadata,
-      //   receiver_id,
-      //   perpetual_royalties:
-      //     Object.keys(perpetual_royalties).length > 0
-      //       ? perpetual_royalties
-      //       : null,
-      // });
-
-      toast('Contract initialized successfully with name:', {
-        description: `The contract is now ready for interaction. `,
-      });
-      // console.log('Contract initialized:', contract);
-    } catch (error: any) {
-      toast('Error initializing contract', {
-        description: `An error occurred: ${error.message}`,
-      });
-      console.error('Error initializing contract:', error);
+  
+      // Assuming the NFT data is directly in `nfts` and has a field that can be checked
+      // You might need to adjust this logic based on how your NFT data is structured
+      const attending = nfts.some(nft => /* logic to determine if the NFT is for the current event */);
+  
+      setIsAttending(attending);
+    } catch (error) {
+      console.error('Failed to fetch NFTs:', error);
+      setIsAttending(false); // Assuming not attending if there's an error
     }
   };
+  
+  // Fetch NFTs on component mount
+  useEffect(() => {
+    fetchUserNFTs();
+  }, []);
 
   return (
     <Drawer>
