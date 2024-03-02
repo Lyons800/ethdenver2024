@@ -1,8 +1,5 @@
-'use client'
-import type { NextPage } from 'next'
+'use client';
 
-const Home: NextPage = () => {
-  return <div />
+export default function Home() {
+  return <div />;
 }
-
-export default Home
