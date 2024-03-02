@@ -80,6 +80,7 @@
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
     "sharp": "^0.33.2",
+    "sonner": "^1.4.3",
     "styles.css": "link:@near-wallet-selector/modal-ui/styles.css",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",

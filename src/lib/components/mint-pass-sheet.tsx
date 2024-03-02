@@ -1,12 +1,19 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/naming-convention */
 
 'use client';
 
+import { toast } from 'sonner';
+
+import { useWallet } from '@/context/wallet-context';
 import { initNearContract } from '@/near/near-contract-helper';
+
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
 export const StakeAndMintSheet = () => {
+  const { wallet, setWallet, isSignedIn, setIsSignedIn } = useWallet();
+
   // Dummy function for slide end handling. Replace with your actual logic.
   // const handleSlideEnd = () => {
   //   // console.log('Slide action confirmed');
@@ -15,38 +22,46 @@ export const StakeAndMintSheet = () => {
 
   const createPass = async () => {
     try {
-      const contract = await initNearContract('testnet');
-
-      // Assuming you have these values correctly defined elsewhere in your code
-      const token_id = '21'; // Unique token ID for the NFT
-      const receiver_id = 'ethprince.testnet'; // The account that will receive the NFT
-      const metadata = {
-        event_id: null, // Use eventId as the title in metadata
-        title: null, // Use eventName as the title in metadata
-        description: null, // Event description
-        // Add other metadata fields as needed
-      };
-      const perpetual_royalties = {
-        // Define perpetual royalties here, if any
-        // "account_id.testnet": percentage (e.g., 500 for 5%)
-      };
-
-      // Adjust the call to match the `nft_mint` function's expected parameters
-
-      //@ts-ignore
-      const result = await contract.nft_mint({
-        token_id,
-        metadata,
-        receiver_id,
-        perpetual_royalties:
-          Object.keys(perpetual_royalties).length > 0
-            ? perpetual_royalties
-            : null,
+      const result = await wallet.callMethod({
+        contractId: 'ethprince.testnet',
+        method: 'nft_mint',
+        args: {
+          token_id: '1',
+          metadata: {
+            title: 'Event Pass',
+            description: 'Pass to access the event',
+            media: 'https://example.com/image.jpg',
+          },
+          receiver_id: wallet.accountId,
+          perpetual_royalties: {
+            'ethprince.testnet': 1000,
+          },
+        },
+        deposit: '6770000000000000000000000',
       });
 
-      console.log('NFT minted:', result);
-    } catch (error) {
-      console.error('Failed to mint NFT', error);
+      console.log('result', result);
+
+      // //@ts-ignore
+      // const result = await contract.nft_mint({
+      //   token_id,
+      //   metadata,
+      //   receiver_id,
+      //   perpetual_royalties:
+      //     Object.keys(perpetual_royalties).length > 0
+      //       ? perpetual_royalties
+      //       : null,
+      // });
+
+      toast('Contract initialized successfully with name:', {
+        description: `The contract is now ready for interaction. `,
+      });
+      // console.log('Contract initialized:', contract);
+    } catch (error: any) {
+      toast('Error initializing contract', {
+        description: `An error occurred: ${error.message}`,
+      });
+      console.error('Error initializing contract:', error);
     }
   };
 

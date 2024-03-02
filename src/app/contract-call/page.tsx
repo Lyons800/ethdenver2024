@@ -20,12 +20,16 @@ export default function InitContractButton() {
       // debugger;
       // const contract = await initNearContract('testnet', wallet);
 
-     const result = await wallet.viewMethod({contractId: 'ethprince.testnet', method: 'nft_total_supply', args: {}})
+      const result = await wallet.viewMethod({
+        contractId: 'ethprince.testnet',
+        method: 'nft_total_supply',
+        args: {},
+      });
 
-     console.log('result', result);
+      console.log('result', result);
 
-    //  const result =  await contract.nft_total_supply()
-    //   console.log('result', result);
+      //  const result =  await contract.nft_total_supply()
+      //   console.log('result', result);
 
       // const name = await contract.get_name()
       // console.log('contract name', name);
