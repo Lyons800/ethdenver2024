@@ -18,7 +18,7 @@ dependencies:
     specifier: 1.0.2
     version: 1.0.2(@near-js/accounts@0.1.3)(@near-js/crypto@0.0.4)(@near-js/keystores-browser@0.0.4)(@near-js/keystores@0.0.4)(@near-js/transactions@0.2.0)(@near-js/types@0.0.4)(@near-js/utils@0.0.4)(@near-js/wallet-account@0.0.6)(near-api-js@3.0.3)
   '@mapbox/search-js-react':
-    specifier: ^1.0.0-beta.18
+    specifier: 1.0.0-beta.18
     version: 1.0.0-beta.18(mapbox-gl@3.2.0)(react-dom@18.2.0)(react@18.2.0)
   '@near-js/accounts':
     specifier: 0.1.3
@@ -84,7 +84,7 @@ dependencies:
     specifier: ^11.4.1
     version: 11.4.1(typescript@5.3.3)(zod@3.22.4)
   ai:
-    specifier: ^3.0.0
+    specifier: ^3.0.2
     version: 3.0.2(react@18.2.0)(solid-js@1.8.15)(svelte@4.2.12)(vue@3.4.21)(zod@3.22.4)
   axios:
     specifier: ^1.6.7
@@ -117,7 +117,7 @@ dependencies:
     specifier: ^0.316.0
     version: 0.316.0(react@18.2.0)
   mapbox-gl:
-    specifier: ^3.1.2
+    specifier: ^3.2.0
     version: 3.2.0
   nanoid:
     specifier: ^5.0.6
@@ -129,13 +129,13 @@ dependencies:
     specifier: ^2.1.0
     version: 2.1.0
   next:
-    specifier: ^14.1.0
+    specifier: ^14.1.1
     version: 14.1.1(@babel/core@7.24.0)(react-dom@18.2.0)(react@18.2.0)
   next-pwa:
     specifier: ^5.6.0
     version: 5.6.0(@babel/core@7.24.0)(next@14.1.1)(webpack@5.90.3)
   next-seo:
-    specifier: ^6.4.0
+    specifier: ^6.5.0
     version: 6.5.0(next@14.1.1)(react-dom@18.2.0)(react@18.2.0)
   next-themes:
     specifier: ^0.2.1
@@ -162,7 +162,7 @@ dependencies:
     specifier: ^2.0.1
     version: 2.0.1(react-dom@18.2.0)(react@18.2.0)
   react-hook-form:
-    specifier: ^7.50.1
+    specifier: ^7.51.0
     version: 7.51.0(react@18.2.0)
   react-hot-toast:
     specifier: ^2.4.1
@@ -236,13 +236,13 @@ dependencies:
 
 devDependencies:
   '@commitlint/cli':
-    specifier: ^18.6.0
+    specifier: ^18.6.1
     version: 18.6.1(@types/node@20.11.24)(typescript@5.3.3)
   '@commitlint/config-conventional':
-    specifier: ^18.6.0
+    specifier: ^18.6.2
     version: 18.6.2
   '@commitlint/cz-commitlint':
-    specifier: ^18.6.0
+    specifier: ^18.6.1
     version: 18.6.1(@types/node@20.11.24)(commitizen@4.3.0)(inquirer@8.2.6)(typescript@5.3.3)
   '@tailwindcss/typography':
     specifier: ^0.5.10
@@ -263,7 +263,7 @@ devDependencies:
     specifier: ^7.1.0
     version: 7.1.0(eslint@8.57.0)(typescript@5.3.3)
   autoprefixer:
-    specifier: ^10.4.17
+    specifier: ^10.4.18
     version: 10.4.18(postcss@8.4.35)
   commitizen:
     specifier: ^4.3.0
@@ -272,25 +272,25 @@ devDependencies:
     specifier: ^7.0.3
     version: 7.0.3
   eslint:
-    specifier: ^8.56.0
+    specifier: ^8.57.0
     version: 8.57.0
   eslint-config-next:
-    specifier: ^14.1.0
+    specifier: ^14.1.1
     version: 14.1.1(eslint@8.57.0)(typescript@5.3.3)
   eslint-config-sznm:
     specifier: ^2.0.2
     version: 2.0.2(eslint@8.57.0)(prettier@3.2.4)(typescript@5.3.3)
   husky:
-    specifier: ^9.0.6
+    specifier: ^9.0.11
     version: 9.0.11
   lint-staged:
-    specifier: ^15.2.0
+    specifier: ^15.2.2
     version: 15.2.2
   next-sitemap:
     specifier: ^4.2.3
     version: 4.2.3(next@14.1.1)
   postcss:
-    specifier: ^8.4.33
+    specifier: ^8.4.35
     version: 8.4.35
   prettier:
     specifier: 3.2.4
