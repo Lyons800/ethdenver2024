@@ -12,11 +12,14 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+import { useWallet } from '@/context/wallet-context';
+
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
 export function SideMenu() {
+  const { wallet } = useWallet();
   const topLinks = [
     {
       label: 'My Tickets',
@@ -57,6 +60,10 @@ export function SideMenu() {
       icon: <UsersIcon size={28} />,
     },
   ];
+
+  const handleSignOutClick = () => {
+    wallet.signOut();
+  };
 
   return (
     <Drawer direction="left">
@@ -101,6 +108,14 @@ export function SideMenu() {
                 </span>
               </Link>
             ))}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full"
+              onClick={handleSignOutClick}
+            >
+              Sign Out
+            </Button>
           </div>
         </div>
       </DrawerContent>

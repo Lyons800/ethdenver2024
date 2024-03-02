@@ -16,7 +16,7 @@ const ApplicationLayout = ({ children }: ApplicationLayoutProps) => {
 
   useEffect(() => {
     if (!isSignedIn) {
-      window.location.href = 'http://localhost:3000/connect-account';
+      window.location.href = '/connect-account';
     }
   }, [isSignedIn]);
 
