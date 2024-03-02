@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 
+//@ts-ignore
 const manifest = (): MetadataRoute.Manifest => ({
   short_name: 'nextarter-tailwind',
   name: 'Next.js App Template',
