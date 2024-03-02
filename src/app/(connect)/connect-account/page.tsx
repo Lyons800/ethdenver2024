@@ -54,10 +54,11 @@ export default function ConnectPage() {
       }}
     >
       <motion.h1 variants={textVariants} className="text-3xl font-bold">
-        Welcome to Our PWA!
+        Welcome to NearEventsHub!
       </motion.h1>
       <motion.p variants={textVariants} className="text-xl">
-        Your gateway to seamless connectivity.
+        Empowering Event Engagement: Secure, Trustless, and Collaborative
+        Experiences on the Blockchain{' '}
       </motion.p>
       {/* The SignInButton can be replaced or uncommented as needed */}
       {/* <SignInButton /> */}

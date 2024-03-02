@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -5,13 +6,14 @@
 
 import { toast } from 'sonner';
 
+import type { Event } from '../types';
 import { useWallet } from '@/context/wallet-context';
 
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
 export const StakeAndMintSheet = () => {
-  const { wallet, setWallet, isSignedIn, setIsSignedIn } = useWallet();
+  const { wallet } = useWallet();
 
   // Dummy function for slide end handling. Replace with your actual logic.
   // const handleSlideEnd = () => {
@@ -21,22 +23,16 @@ export const StakeAndMintSheet = () => {
 
   const createPass = async () => {
     try {
-      const randomNumber = Math.floor(Math.random() * 1000);
-      const result = await wallet
-        .callMethod({
-          contractId: 'ethprince.testnet',
-          method: 'nft_mint',
-          args: {
-            token_id: randomNumber.toString(),
-            metadata: {
-              title: 'Event Pass',
-              description: 'Pass to access the event',
-              media: 'https://example.com/image.jpg',
-            },
-            receiver_id: wallet.accountId,
-            perpetual_royalties: {
-              'ethprince.testnet': 1000,
-            },
+      const token_id = Math.floor(Math.random() * 1000000).toString();
+
+      const result = await wallet.callMethod({
+        contractId: 'ethprince.testnet',
+        method: 'nft_mint',
+        args: {
+          token_id, // Use the randomly generated token ID
+          metadata: {
+            title: 'Nearcon 2024 Pass',
+            description: `Pass to access Nearcon 2024`,
           },
           deposit: '6770000000000000000000000',
         })
