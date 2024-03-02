@@ -11,7 +11,7 @@ import { setupModal } from '@near-wallet-selector/modal-ui';
 
 // wallet selector options
 import { setupWalletSelector } from '@near-wallet-selector/core';
-import { setupLedger } from '@near-wallet-selector/ledger';
+// import { setupLedger } from '@near-wallet-selector/ledger';
 import { setupMyNearWallet } from '@near-wallet-selector/my-near-wallet';
 
 const THIRTY_TGAS = '30000000000000';
@@ -29,8 +29,8 @@ export class Wallet {
     // key, so the user skips signing non-payable transactions.
     // Omitting the accountId will result in the user being
     // asked to sign all transactions.
-    this.createAccessKeyFor = createAccessKeyFor
-    this.network = network
+    this.createAccessKeyFor = createAccessKeyFor;
+    this.network = network;
   }
 
   // To be called when the website loads
@@ -45,7 +45,8 @@ export class Wallet {
 
     if (isSignedIn) {
       this.wallet = await this.walletSelector.wallet();
-      this.accountId = this.walletSelector.store.getState().accounts[0].accountId;
+      this.accountId =
+        this.walletSelector.store.getState().accounts[0].accountId;
     }
 
     return isSignedIn;
@@ -54,7 +55,10 @@ export class Wallet {
   // Sign-in method
   signIn() {
     const description = 'Please select a wallet to sign in.';
-    const modal = setupModal(this.walletSelector, { contractId: this.createAccessKeyFor, description });
+    const modal = setupModal(this.walletSelector, {
+      contractId: this.createAccessKeyFor,
+      description,
+    });
     modal.show();
   }
 
@@ -81,7 +85,13 @@ export class Wallet {
   }
 
   // Call a method that changes the contract's state
-  async callMethod({ contractId, method, args = {}, gas = THIRTY_TGAS, deposit = NO_DEPOSIT }) {
+  async callMethod({
+    contractId,
+    method,
+    args = {},
+    gas = THIRTY_TGAS,
+    deposit = NO_DEPOSIT,
+  }) {
     // Sign a transaction with the "FunctionCall" action
     const outcome = await this.wallet.signAndSendTransaction({
       signerId: this.accountId,
@@ -99,7 +109,7 @@ export class Wallet {
       ],
     });
 
-    return providers.getTransactionLastResult(outcome)
+    return providers.getTransactionLastResult(outcome);
   }
 
   // Get transaction result from the network
