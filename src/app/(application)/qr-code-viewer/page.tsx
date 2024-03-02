@@ -1,11 +1,10 @@
 'use client';
 
-import { Button } from '@/lib/components/ui/button';
 import { QRCode } from 'react-qrcode-logo';
 
 export default function QRCodeViewer() {
   return (
-    <div className="flex justify-center items-center w-full h-screen bg-center bg-cover bg-no-repeat" >
+    <div className="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat">
       <QRCode
         value="https://github.com/gcoro/react-qrcode-logo"
         size={256}
