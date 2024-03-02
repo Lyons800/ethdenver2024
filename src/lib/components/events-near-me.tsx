@@ -2,17 +2,10 @@
 
 'use client';
 
+import type { Event } from '../types';
+
 import { EventSheet } from './event-sheet';
 
-interface Event {
-  id: string;
-  name: string;
-  location: string;
-  date: string; // or Date, depending on how you handle dates
-  // Add any other relevant properties of an event
-  image: string;
-  description: string;
-}
 interface EventsNearMeProps {
   events: Event[]; // This specifies that `events` is an array of Event objects
 }

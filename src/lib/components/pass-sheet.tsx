@@ -3,16 +3,10 @@ import { TicketIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
+import type { Event } from '../types';
+
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
-
-interface Event {
-  id: string;
-  name: string;
-  image: string;
-  location: string;
-  description: string;
-}
 
 export function PassSheet({ event }: { event: Event }) {
   const [isLoading, setIsLoading] = useState(false);

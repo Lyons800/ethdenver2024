@@ -3,6 +3,8 @@
 import { Clock, MapPinIcon, ShareIcon } from 'lucide-react';
 import Image from 'next/image';
 
+import type { Event } from '../types';
+
 import MapComponent from './map';
 import { StakeAndMintSheet } from './mint-pass-sheet';
 import { PassSheet } from './pass-sheet';
@@ -10,13 +12,6 @@ import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 import { ScrollArea } from './ui/scroll-area';
 
-interface Event {
-  id: string;
-  name: string;
-  image: string;
-  location: string;
-  description: string;
-}
 export function EventSheet({ event }: { event: Event }) {
   const isAttending = true;
 

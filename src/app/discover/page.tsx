@@ -34,6 +34,7 @@ const eventsNearMe = [
   },
 ];
 
+
 const DiscoverPage = () => {
   // Assuming you have a function to get the user's location and fetch events based on that location
   // const {
