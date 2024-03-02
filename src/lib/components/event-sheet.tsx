@@ -87,7 +87,7 @@ export function EventSheet({ event }: { event: Event }) {
           </div>
         ) : (
           <div className="flex w-full justify-center">
-            <StakeAndMintSheet />
+            <StakeAndMintSheet eventId={event.id} />
           </div>
         )}
       </DrawerContent>

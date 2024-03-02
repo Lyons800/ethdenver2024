@@ -47,37 +47,35 @@ export function CreateEventSheet() {
     longitude: null,
   });
 
-  const createEvent = async () => {
+  const createEventContract = async (eventDetails) => {
     try {
-      const contract = await initNearContract('testnet');
+      const factoryContract = await initNearContract('testnet');
 
-      // Assuming you have these values correctly defined elsewhere in your code
-      const token_id = '21'; // Unique token ID for the NFT
-      const receiver_id = 'ethprince.testnet'; // The account that will receive the NFT
-      const metadata = {
-        title: eventName, // Use eventName as the title in metadata
-        description: eventDescription, // Event description
-        // Add other metadata fields as needed
-      };
-      const perpetual_royalties = {
-        // Define perpetual royalties here, if any
-        // "account_id.testnet": percentage (e.g., 500 for 5%)
+      // Prepare the event details as metadata
+      const eventMetadata = {
+        title: eventDetails.name,
+        description: eventDetails.description,
+        date: eventDetails.date,
+        location: JSON.stringify({
+          latitude: eventDetails.coordinates.latitude,
+          longitude: eventDetails.coordinates.longitude,
+        }),
+        // Add other event details as needed
       };
 
-      // Adjust the call to match the `nft_mint` function's expected parameters
-      const result = await contract.nft_mint({
-        token_id,
-        metadata,
-        receiver_id,
-        perpetual_royalties:
-          Object.keys(perpetual_royalties).length > 0
-            ? perpetual_royalties
-            : null,
+      // Call the factory contract's method to deploy a new event contract
+      // with the event metadata
+      const newContractDetails = await factoryContract.new({
+        owner_id: 'ethprince.testnet', // Specify the owner of the new contract
+        metadata: eventMetadata, // Pass the prepared metadata
       });
 
-      console.log('NFT minted:', result);
+      console.log(
+        'New event contract deployed at:',
+        newContractDetails.contractAddress
+      );
     } catch (error) {
-      console.error('Failed to mint NFT', error);
+      console.error('Failed to deploy new event contract:', error);
     }
   };
 
@@ -183,8 +181,15 @@ export function CreateEventSheet() {
             </div>
             <div className="flex w-full justify-center">
               <Button
-                className=" w-[300px] justify-center"
-                onClick={createEvent}
+                className="w-[300px] justify-center"
+                onClick={() =>
+                  createEventContract({
+                    name: eventName,
+                    description: eventDescription,
+                    date: eventDate,
+                    coordinates, // Assuming this state contains the latitude and longitude
+                  })
+                }
               >
                 Create
               </Button>
