@@ -1,10 +1,10 @@
-import { useState, useEffect, useCallback } from 'react'
-import { useRouter } from 'next/router'
-import AddressInput from '../AddressInput'
-import { isEns, getAddressFromPath, is0xAddress } from '../helpers'
-import { useAppStore } from '../store/app'
-import useWalletProvider from '../hooks/useWalletProvider'
-import BackArrow from '../BackArrow'
+import { useState, useEffect, useCallback } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import AddressInput from '../AddressInput';
+import { isEns, getAddressFromPath, is0xAddress } from '../helpers';
+import { useAppStore } from '../store/app';
+import useWalletProvider from '../hooks/useWalletProvider';
+import BackArrow from '../BackArrow';
 
 const RecipientInputMode = {
   InvalidEntry: 0,
@@ -12,104 +12,110 @@ const RecipientInputMode = {
   FindingEntry: 2,
   Submitted: 3,
   NotOnNetwork: 4,
-}
+};
 
 const RecipientControl = (): JSX.Element => {
-  const { resolveName, lookupAddress } = useWalletProvider()
-  const client = useAppStore((state) => state.client)
-  const router = useRouter()
-  const recipientWalletAddress = getAddressFromPath(router)
+  const { resolveName, lookupAddress } = useWalletProvider();
+  const client = useAppStore((state) => state.client);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const recipientWalletAddr = searchParams.get('recipientWalletAddr');
+  const recipientWalletAddress = Array.isArray(recipientWalletAddr)
+    ? recipientWalletAddr[0]
+    : (recipientWalletAddr as string);
+
+  // const recipientWalletAddress = getAddressFromPath(router)
   const [recipientInputMode, setRecipientInputMode] = useState(
     RecipientInputMode.InvalidEntry
-  )
-  const [hasName, setHasName] = useState(false)
+  );
+  const [hasName, setHasName] = useState(false);
 
   const checkIfOnNetwork = useCallback(
     async (address: string): Promise<boolean> => {
-      return client?.canMessage(address) || false
+      return client?.canMessage(address) || false;
     },
     [client]
-  )
+  );
 
   const onSubmit = async (address: string) => {
-    router.push(address ? `/dm/${address}` : '/dm/')
-  }
+    router.push(address ? `/xmtp-chat/dm/${address}` : '/xmtp-chat/dm/');
+  };
 
   const handleBackArrowClick = useCallback(() => {
-    router.push('/')
-  }, [router])
+    router.push('/');
+  }, [router]);
 
   const completeSubmit = async (address: string, input: HTMLInputElement) => {
     if (await checkIfOnNetwork(address)) {
-      onSubmit(address)
-      input.blur()
-      setRecipientInputMode(RecipientInputMode.Submitted)
+      onSubmit(address);
+      input.blur();
+      setRecipientInputMode(RecipientInputMode.Submitted);
     } else {
-      setRecipientInputMode(RecipientInputMode.NotOnNetwork)
+      setRecipientInputMode(RecipientInputMode.NotOnNetwork);
     }
-  }
+  };
 
   useEffect(() => {
     const handleAddressLookup = async (address: string) => {
-      const name = await lookupAddress(address)
-      setHasName(!!name)
-    }
+      const name = await lookupAddress(address);
+      setHasName(!!name);
+    };
     if (recipientWalletAddress && !isEns(recipientWalletAddress)) {
-      setRecipientInputMode(RecipientInputMode.Submitted)
-      handleAddressLookup(recipientWalletAddress)
+      setRecipientInputMode(RecipientInputMode.Submitted);
+      handleAddressLookup(recipientWalletAddress);
     } else {
-      setRecipientInputMode(RecipientInputMode.InvalidEntry)
+      setRecipientInputMode(RecipientInputMode.InvalidEntry);
     }
-  }, [lookupAddress, recipientWalletAddress])
+  }, [lookupAddress, recipientWalletAddress]);
 
   const handleSubmit = useCallback(
     async (e: React.SyntheticEvent, value?: string) => {
-      e.preventDefault()
+      e.preventDefault();
       const data = e.target as typeof e.target & {
-        recipient: { value: string }
-      }
-      const input = e.target as HTMLInputElement
-      const recipientValue = value || data.recipient.value
+        recipient: { value: string };
+      };
+      const input = e.target as HTMLInputElement;
+      const recipientValue = value || data.recipient.value;
       if (isEns(recipientValue)) {
-        setRecipientInputMode(RecipientInputMode.FindingEntry)
-        const address = await resolveName(recipientValue)
+        setRecipientInputMode(RecipientInputMode.FindingEntry);
+        const address = await resolveName(recipientValue);
         if (address) {
-          await completeSubmit(address, input)
+          await completeSubmit(address, input);
         } else {
-          setRecipientInputMode(RecipientInputMode.InvalidEntry)
+          setRecipientInputMode(RecipientInputMode.InvalidEntry);
         }
       } else if (is0xAddress(recipientValue)) {
-        await completeSubmit(recipientValue, input)
+        await completeSubmit(recipientValue, input);
       }
     },
     [resolveName]
-  )
+  );
 
   const handleInputChange = useCallback(
     async (e: React.SyntheticEvent) => {
       const data = e.target as typeof e.target & {
-        value: string
-      }
+        value: string;
+      };
       if (router.pathname !== '/dm') {
-        router.push('/dm')
+        router.push('/dm');
       }
       if (isEns(data.value) || is0xAddress(data.value)) {
-        handleSubmit(e, data.value)
+        handleSubmit(e, data.value);
       } else {
-        setRecipientInputMode(RecipientInputMode.InvalidEntry)
+        setRecipientInputMode(RecipientInputMode.InvalidEntry);
       }
     },
     [handleSubmit, router]
-  )
+  );
 
   return (
     <>
-      <div className="md:hidden flex items-center ml-3">
+      <div className="ml-3 flex items-center md:hidden">
         <BackArrow onClick={handleBackArrowClick} />
       </div>
-      <div className="flex-1 flex-col shrink justify-center flex bg-zinc-50 md:border-b md:border-gray-200 md:px-4 md:pb-[2px]">
+      <div className="flex flex-1 shrink flex-col justify-center bg-zinc-50 md:border-b md:border-gray-200 md:px-4 md:pb-[2px]">
         <form
-          className="w-full flex pl-2 md:pl-0 h-8 pt-1"
+          className="flex h-8 w-full pl-2 pt-1 md:pl-0"
           action="#"
           method="GET"
           onSubmit={handleSubmit}
@@ -117,14 +123,14 @@ const RecipientControl = (): JSX.Element => {
           <label htmlFor="recipient-field" className="sr-only">
             Recipient
           </label>
-          <div className="relative w-full text-n-300 focus-within:text-n-600">
-            <div className="absolute top-1 left-0 flex items-center pointer-events-none text-md md:text-sm font-medium md:font-semibold">
+          <div className="text-n-300 focus-within:text-n-600 relative w-full">
+            <div className="text-md pointer-events-none absolute left-0 top-1 flex items-center font-medium md:text-sm md:font-semibold">
               To:
             </div>
             <AddressInput
               recipientWalletAddress={recipientWalletAddress}
               id="recipient-field"
-              className="block w-[95%] pl-7 pr-3 pt-[3px] md:pt-[2px] md:pt-[1px] bg-transparent caret-n-600 text-n-600 placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-0 focus:border-transparent text-lg font-mono"
+              className="caret-n-600 text-n-600 block w-[95%] bg-transparent pl-7 pr-3 pt-[3px] font-mono text-lg placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0 md:pt-[1px] md:pt-[2px]"
               name="recipient"
               onInputChange={handleInputChange}
             />
@@ -133,11 +139,11 @@ const RecipientControl = (): JSX.Element => {
         </form>
 
         {recipientInputMode === RecipientInputMode.Submitted ? (
-          <div className="text-md text-n-300 text-sm font-mono ml-10 md:ml-8 pb-1 md:pb-[1px]">
+          <div className="text-md text-n-300 ml-10 pb-1 font-mono text-sm md:ml-8 md:pb-[1px]">
             {hasName ? recipientWalletAddress : <br />}
           </div>
         ) : (
-          <div className="text-sm md:text-xs text-n-300 ml-[29px] pl-2 md:pl-0 pb-1 md:pb-[3px]">
+          <div className="text-n-300 ml-[29px] pb-1 pl-2 text-sm md:pb-[3px] md:pl-0 md:text-xs">
             {recipientInputMode === RecipientInputMode.NotOnNetwork &&
               'Recipient is not on the XMTP network'}
             {recipientInputMode === RecipientInputMode.FindingEntry &&
@@ -149,7 +155,7 @@ const RecipientControl = (): JSX.Element => {
         )}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default RecipientControl
+export default RecipientControl;

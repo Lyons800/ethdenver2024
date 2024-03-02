@@ -3,7 +3,7 @@ import { classNames } from '../helpers'
 import messageComposerStyles from '../styles/MessageComposer.module.css'
 import upArrowGreen from '../../../../public/up-arrow-green.svg'
 import upArrowGrey from '../../../../public/up-arrow-grey.svg'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 
 type MessageComposerProps = {
@@ -13,8 +13,11 @@ type MessageComposerProps = {
 const MessageComposer = ({ onSend }: MessageComposerProps): JSX.Element => {
   const [message, setMessage] = useState('')
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const recipientWalletAddr = searchParams.get('recipientWalletAddr')
 
-  useEffect(() => setMessage(''), [router.query.recipientWalletAddr])
+
+  useEffect(() => setMessage(''), [recipientWalletAddr])
 
   const onMessageChange = (e: React.FormEvent<HTMLInputElement>) =>
     setMessage(e.currentTarget.value)
