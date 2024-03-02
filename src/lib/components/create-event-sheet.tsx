@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console */
 
 'use client';
 
 import { PlusCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
+import { initNearContract } from '@/near/near-contract-helper';
 
 import { LocationSelectSheet } from './location-select-sheet';
 import MapComponent from './map';
@@ -43,6 +46,40 @@ export function CreateEventSheet() {
     latitude: null,
     longitude: null,
   });
+
+  const createEvent = async () => {
+    try {
+      const contract = await initNearContract('testnet');
+
+      // Assuming you have these values correctly defined elsewhere in your code
+      const token_id = '21'; // Unique token ID for the NFT
+      const receiver_id = 'ethprince.testnet'; // The account that will receive the NFT
+      const metadata = {
+        title: eventName, // Use eventName as the title in metadata
+        description: eventDescription, // Event description
+        // Add other metadata fields as needed
+      };
+      const perpetual_royalties = {
+        // Define perpetual royalties here, if any
+        // "account_id.testnet": percentage (e.g., 500 for 5%)
+      };
+
+      // Adjust the call to match the `nft_mint` function's expected parameters
+      const result = await contract.nft_mint({
+        token_id,
+        metadata,
+        receiver_id,
+        perpetual_royalties:
+          Object.keys(perpetual_royalties).length > 0
+            ? perpetual_royalties
+            : null,
+      });
+
+      console.log('NFT minted:', result);
+    } catch (error) {
+      console.error('Failed to mint NFT', error);
+    }
+  };
 
   useEffect(() => {
     if (selectedAddress) {
@@ -145,7 +182,12 @@ export function CreateEventSheet() {
               </div>
             </div>
             <div className="flex w-full justify-center">
-              <Button className=" w-[300px] justify-center">Create</Button>
+              <Button
+                className=" w-[300px] justify-center"
+                onClick={createEvent}
+              >
+                Create
+              </Button>
             </div>
           </div>
         </ScrollArea>

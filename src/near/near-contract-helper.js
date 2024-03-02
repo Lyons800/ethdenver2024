@@ -27,6 +27,7 @@ export async function initNearContract(env) {
         'created_at',
       ],
       changeMethods: [
+        'nft_mint',
         'join',
         'ping',
         'create_group',
