@@ -66,6 +66,7 @@ const SignInButton = () => {
 
   return (
     <div>
+      {' '}
       {isSignedIn ? (
         // eslint-disable-next-line react/button-has-type
         <button onClick={handleSignOut}>Sign Out</button>
@@ -74,7 +75,7 @@ const SignInButton = () => {
         <button onClick={handleSignIn}>Sign In with NEAR Wallet</button>
       )}
       {/* Button to log the wallet state */}
-      <button onClick={logWalletState}>Log Wallet State</button>
+      {/* <button onClick={logWalletState}>Log Wallet State</button> */}
     </div>
   );
 };
