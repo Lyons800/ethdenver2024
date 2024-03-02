@@ -14,12 +14,12 @@ module.exports = withPWA({
   images: {
     domains: ['images.unsplash.com', 'via.placeholder.com'],
   },
-  webpack: (config, options) => {
-    config.experiments = {
-      asyncWebAssembly: true,
-      syncWebAssembly: true,
-      layers: true,
-    };
-    return config;
-  },
+  // webpack: (config, options) => {
+  //   config.experiments = {
+  //     asyncWebAssembly: true,
+  //     syncWebAssembly: true,
+  //     layers: true,
+  //   };
+  //   return config;
+  // },
 });

@@ -2,7 +2,11 @@
 
 'use client';
 
+import { useWallet } from '@/context/wallet-context';
+
 import PassCard from './pass-card';
+import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
 
 const passes = [
   // Example passes data
@@ -50,6 +54,15 @@ const passes = [
 ];
 
 const MyPassesPage = () => {
+  const { isSignedIn } = useWallet();
+  // const router = useRouter();
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      window.location.href = 'http://localhost:3000/connect-account';
+    }
+  }, [isSignedIn]);
+
   return (
     <div className="relative flex h-screen w-full items-center justify-center">
       <h1 className="absolute top-0 w-full text-center text-2xl font-bold">
