@@ -1,12 +1,10 @@
-'use client';
-
+import { motion } from 'framer-motion';
 import { TicketIcon } from 'lucide-react';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
-import { StakeAndMintSheet } from './mint-pass-sheet';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
-import { ScrollArea } from './ui/scroll-area';
 
 interface Event {
   id: string;
@@ -17,14 +15,33 @@ interface Event {
 }
 
 export function PassSheet({ event }: { event: Event }) {
-  const isAttending = true;
+  const [isLoading, setIsLoading] = useState(false);
+  const [isGeneratingQR, setIsGeneratingQR] = useState(true);
+
+  useEffect(() => {
+    // Simulate QR code generation delay
+    const timer = setTimeout(() => {
+      setIsGeneratingQR(false);
+    }, 2000); // Adjust delay as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleAddToWalletClick = async () => {
+    setIsLoading(true);
+    // Simulate a network request or processing delay
+    setTimeout(() => {
+      setIsLoading(false);
+      // After loading, you might want to show a success message or dialog here
+    }, 2000); // Simulate loading for 2 seconds
+  };
 
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="mt-4 w-full">
+        <Button variant="outline" className="mt-4 w-full gap-2">
           <TicketIcon size="16" />
-          View Ticket
+          Generate Pass
         </Button>
       </DrawerTrigger>
 
@@ -32,51 +49,59 @@ export function PassSheet({ event }: { event: Event }) {
         className="flex w-full flex-col p-4"
         style={{ height: '95vh' }}
       >
-        <ScrollArea className="h-auto overflow-y-auto">
-          <div className="mt-4 flex w-full items-center justify-center">
-            <Image
-              src={event.image}
-              alt={event.name}
-              width={360}
-              height={360}
-              className="rounded-md"
-            />
-          </div>
-          <h3 className="mt-4 font-semibold">{event.name}</h3>
-          <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
-            Today at 20:30 - 21:30
-          </p>
-          {/* <Button
-            variant="outline"
-            className="mt-4 w-full justify-center gap-2"
-          >
-            <ShareIcon size="16" />
-            Share
-          </Button>
-          Location
-          <p className="flex flex-row items-center gap-2 text-sm text-gray-600">
-            {event.location}
-          </p>
-          <div className="mb-4 h-[100px] overflow-hidden rounded-lg">
-            <MapComponent latitude={null} longitude={null} />
-          </div>
-          <p className="mt-4">{event.description}</p>
-          <div className="space-y-4" /> */}
-        </ScrollArea>
+        <div className="mt-4 flex h-full w-full flex-col justify-between">
+          <h3>{event.name}</h3>
 
-        {/* Conditional Rendering for Registration or Ticket Link */}
-        {isAttending ? (
+          {isGeneratingQR ? (
+            <div className="flex h-32 items-center justify-center">
+              {' '}
+              {/* Adjust size as needed */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ loop: Infinity, duration: 1 }}
+              >
+                {/* Loading indicator */}
+                <TicketIcon size="32" />{' '}
+                {/* Example, replace with your spinner */}
+              </motion.div>
+            </div>
+          ) : (
+            <div className="flex items-center justify-center">
+              {/* Placeholder for QR code */}
+              <Image
+                src="/qr-code.png"
+                alt="QR Code"
+                width={380}
+                height={380}
+              />
+            </div>
+          )}
+
           <div className="flex w-full justify-center">
-            <Button variant="outline" className="mt-4 w-full">
-              <TicketIcon size="16" />
-              View Ticket
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                variant="outline"
+                className={`mt-4 w-full gap-2 ${isLoading ? 'loading-class' : ''}`}
+                onClick={handleAddToWalletClick}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <motion.span
+                    animate={{ rotate: 360 }}
+                    transition={{ loop: Infinity, duration: 1 }}
+                  >
+                    <TicketIcon size="16" />
+                  </motion.span>
+                ) : (
+                  <>
+                    <TicketIcon size="16" />
+                    Add to Apple Wallet
+                  </>
+                )}
+              </Button>
+            </motion.div>
           </div>
-        ) : (
-          <div className="flex w-full justify-center">
-            <StakeAndMintSheet />
-          </div>
-        )}
+        </div>
       </DrawerContent>
     </Drawer>
   );
