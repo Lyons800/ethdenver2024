@@ -12,6 +12,7 @@ import useInitXmtpClient from '../../components/hooks/useInitXmtpClient';
 import useListConversations from '../../components/hooks/useListConversations';
 import useWalletProvider from '../../components/hooks/useWalletProvider';
 
+
 export const dynamic = 'force-dynamic';
 
 const App: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
