@@ -35,7 +35,7 @@ const BottomNav = () => {
     },
     {
       label: 'Chats',
-      href: '/chats',
+      href: '/xmtp-chat',
       icon: <MessagesSquareIcon size={18} />,
     },
   ];
