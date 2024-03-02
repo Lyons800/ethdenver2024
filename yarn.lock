@@ -2048,6 +2048,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ledgerhq/devices@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "@ledgerhq/devices@npm:8.2.1"
+  dependencies:
+    "@ledgerhq/errors": ^6.16.2
+    "@ledgerhq/logs": ^6.12.0
+    rxjs: ^7.8.1
+    semver: ^7.3.5
+  checksum: 5c7fa3004a4ebd30b0dcb8563642db308478bbec115102e5404dd0affcc99f880d094137e88c1f2cc064f78d65a5e946d5ebd8db89141977e32860885ea23ebe
+  languageName: node
+  linkType: hard
+
+"@ledgerhq/errors@npm:^6.16.2":
+  version: 6.16.2
+  resolution: "@ledgerhq/errors@npm:6.16.2"
+  checksum: 2dd796c78b8428339c8906cfe2325e62c211f484576835198a9bf4efc8fed38b4ca5d342bfb08aef6c623720753ea3e5ce77e50367f2808ad5610e3ff54cec70
+  languageName: node
+  linkType: hard
+
+"@ledgerhq/hw-transport-webhid@npm:^6.20.0":
+  version: 6.28.4
+  resolution: "@ledgerhq/hw-transport-webhid@npm:6.28.4"
+  dependencies:
+    "@ledgerhq/devices": ^8.2.1
+    "@ledgerhq/errors": ^6.16.2
+    "@ledgerhq/hw-transport": ^6.30.4
+    "@ledgerhq/logs": ^6.12.0
+  checksum: 9f1dec320b71b5cd892c1cad9c48be43fe8f1d60d842af1ceeb52c1751fb3cb9056684b20d6f7f6b1b7111c1e7f7dbb8a360031ee795d9d141356bda3f47c489
+  languageName: node
+  linkType: hard
+
+"@ledgerhq/hw-transport@npm:^6.20.0, @ledgerhq/hw-transport@npm:^6.30.4":
+  version: 6.30.4
+  resolution: "@ledgerhq/hw-transport@npm:6.30.4"
+  dependencies:
+    "@ledgerhq/devices": ^8.2.1
+    "@ledgerhq/errors": ^6.16.2
+    "@ledgerhq/logs": ^6.12.0
+    events: ^3.3.0
+  checksum: f4878e0b1ea093c69d2905c94bc9567c1c6694af9cff034634dd9639bd318666f131f2394f67c95d3cfd96b64693e14e4735883136545a19d8df902e3b59bf5e
+  languageName: node
+  linkType: hard
+
+"@ledgerhq/logs@npm:^6.10.0, @ledgerhq/logs@npm:^6.12.0":
+  version: 6.12.0
+  resolution: "@ledgerhq/logs@npm:6.12.0"
+  checksum: 53fb9ceaf26b2a9fd6e7639b19119f4fef2f814d465fdd910e69c9486dce78137a1790e24f019a03bfabc87e19b2e6683f4da93a7fd203a61117a709fdf6484c
+  languageName: node
+  linkType: hard
+
 "@mapbox/geojson-rewind@npm:^0.5.2":
   version: 0.5.2
   resolution: "@mapbox/geojson-rewind@npm:0.5.2"
@@ -4618,6 +4668,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bn.js@npm:5.2.0":
+  version: 5.2.0
+  resolution: "bn.js@npm:5.2.0"
+  checksum: 6117170393200f68b35a061ecbf55d01dd989302e7b3c798a3012354fa638d124f0b2f79e63f77be5556be80322a09c40339eda6413ba7468524c0b6d4b4cb7a
+  languageName: node
+  linkType: hard
+
 "bn.js@npm:5.2.1, bn.js@npm:^5.2.0, bn.js@npm:^5.2.1":
   version: 5.2.1
   resolution: "bn.js@npm:5.2.1"
@@ -4640,6 +4697,17 @@ __metadata:
   version: 1.0.0
   resolution: "borsh@npm:1.0.0"
   checksum: fbb2101a30e94537a330b6158d513c497d760f4ddfc457e1431120a201f06eb05b7879100581e95deff07aad974cabc394da708a0be322ad26697177eadd123b
+  languageName: node
+  linkType: hard
+
+"borsh@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "borsh@npm:0.6.0"
+  dependencies:
+    bn.js: ^5.2.0
+    bs58: ^4.0.0
+    text-encoding-utf-8: ^1.0.2
+  checksum: 633986769e931dd9d156c0d52a315cd3bb0546c24df84e28fa04859cccbebd9107f1621bd594d4a63ba23c7cda2931a8d97e54952ee766a097d3c2434f80b009
   languageName: node
   linkType: hard
 
@@ -4831,6 +4899,13 @@ __metadata:
   version: 1.0.30001591
   resolution: "caniuse-lite@npm:1.0.30001591"
   checksum: e48f924cdefff86d29d38ee1bffe2cdb1ef55e179d08ae2f1f5546d9d563e030f13755a0096ea87a09498daffd18666d1fe0b2759aea8421bbf4c214b47d410d
+  languageName: node
+  linkType: hard
+
+"capability@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "capability@npm:0.2.5"
+  checksum: 59ce65958dc0f2e76e7007fe8d5a0a85801b950bb957779c11948776f0e7a1290b9638bfd2da92b4b8bebd7584f92a8c38d4e6613659c9637783a6993026b08b
   languageName: node
   linkType: hard
 
@@ -6188,6 +6263,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"error-polyfill@npm:^0.1.3":
+  version: 0.1.3
+  resolution: "error-polyfill@npm:0.1.3"
+  dependencies:
+    capability: ^0.2.5
+    o3: ^1.0.3
+    u3: ^0.1.1
+  checksum: 1aee485841310e1f4d10cde0a5c8ac840311c94914bb1aed8fd71826be84dd5dba3d4ab937f39c0b970edb3d0a76cfb5d001ec979db6c68858b5f75c1f504c52
+  languageName: node
+  linkType: hard
+
 "es-abstract@npm:^1.22.1, es-abstract@npm:^1.22.3, es-abstract@npm:^1.22.4":
   version: 1.22.5
   resolution: "es-abstract@npm:1.22.5"
@@ -6752,7 +6838,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"events@npm:3.3.0":
+"events@npm:3.3.0, events@npm:^3.3.0":
   version: 3.3.0
   resolution: "events@npm:3.3.0"
   checksum: f6f487ad2198aa41d878fa31452f1a3c00958f46e9019286ff4787c84aac329332ab45c9cdc8c445928fc6d7ded294b9e005a7fce9426488518017831b272780
@@ -8268,6 +8354,13 @@ __metadata:
   version: 2.0.2
   resolution: "is-map@npm:2.0.2"
   checksum: ace3d0ecd667bbdefdb1852de601268f67f2db725624b1958f279316e13fecb8fa7df91fd60f690d7417b4ec180712f5a7ee967008e27c65cfd475cc84337728
+  languageName: node
+  linkType: hard
+
+"is-mobile@npm:^3.0.0":
+  version: 3.1.1
+  resolution: "is-mobile@npm:3.1.1"
+  checksum: b7c549020ac4674520378623afc4976694ff686eb3761cfad12da936ba9c2d675687bdc3c82eadf5a25147ce51c682800679bf835e31de272f05c026cd2b2f14
   languageName: node
   linkType: hard
 
@@ -10272,6 +10365,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"near-api-js@npm:0.44.2":
+  version: 0.44.2
+  resolution: "near-api-js@npm:0.44.2"
+  dependencies:
+    bn.js: 5.2.0
+    borsh: ^0.6.0
+    bs58: ^4.0.0
+    depd: ^2.0.0
+    error-polyfill: ^0.1.3
+    http-errors: ^1.7.2
+    js-sha256: ^0.9.0
+    mustache: ^4.0.0
+    node-fetch: ^2.6.1
+    text-encoding-utf-8: ^1.0.2
+    tweetnacl: ^1.0.1
+  checksum: d63625ab83d695d23a9126997355909fe141204c431a4818733050e1fcda11e5508dc70ff2e8fd55c1b2842908babd42fcf0ed4f3dc8c3fdb23ae422c497996d
+  languageName: node
+  linkType: hard
+
 "near-api-js@npm:^3.0.3":
   version: 3.0.3
   resolution: "near-api-js@npm:3.0.3"
@@ -10320,6 +10432,22 @@ __metadata:
     near-hd-key: ^1.2.1
     tweetnacl: ^1.0.2
   checksum: 66c5a946bae107746256c590429123d9b02daf22ab1f32d12cab79414bf34d6d2de7b17896d14459fd515b42c56cd510adafedf9f69075534c6105812b4438f8
+  languageName: node
+  linkType: hard
+
+"near-wallet-selector@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "near-wallet-selector@npm:2.1.0"
+  dependencies:
+    "@ledgerhq/hw-transport": ^6.20.0
+    "@ledgerhq/hw-transport-webhid": ^6.20.0
+    "@ledgerhq/logs": ^6.10.0
+    bn.js: ^5.2.0
+    is-mobile: ^3.0.0
+    near-api-js: 0.44.2
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  checksum: 0a2e08a96d1c4e8f671994c15ebc49ea3f26ca9bf6021f3c16576ccee3fa187b62bc1f43eea3391d7432f0900dc1d3ff7c9c06839300e7bf5ea6deeba236ba37
   languageName: node
   linkType: hard
 
@@ -10498,6 +10626,7 @@ __metadata:
     mapbox-gl: ^3.1.2
     nanoid: ^5.0.6
     near-api-js: ^3.0.3
+    near-wallet-selector: ^2.1.0
     next: ^14.1.0
     next-pwa: ^5.6.0
     next-seo: ^6.4.0
@@ -10669,6 +10798,15 @@ __metadata:
   dependencies:
     path-key: ^4.0.0
   checksum: ae8e7a89da9594fb9c308f6555c73f618152340dcaae423e5fb3620026fefbec463618a8b761920382d666fa7a2d8d240b6fe320e8a6cdd54dc3687e2b659d25
+  languageName: node
+  linkType: hard
+
+"o3@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "o3@npm:1.0.3"
+  dependencies:
+    capability: ^0.2.5
+  checksum: 3b4d0686c94ac21b3c8bd66fb2c93a4daef7b8f52a20b04595754f8dc4102550de9a7b1cdffa3db2191d47a4ae70ca568f21d9f3ba29bb15c3f004dbf636c33c
   languageName: node
   linkType: hard
 
@@ -11570,6 +11708,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-dom@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+    scheduler: ^0.20.2
+  peerDependencies:
+    react: 17.0.2
+  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
+  languageName: node
+  linkType: hard
+
 "react-hook-form@npm:^7.50.1":
   version: 7.51.0
   resolution: "react-hook-form@npm:7.51.0"
@@ -11792,6 +11943,16 @@ __metadata:
   dependencies:
     loose-envify: ^1.1.0
   checksum: 88e38092da8839b830cda6feef2e8505dec8ace60579e46aa5490fc3dc9bba0bd50336507dc166f43e3afc1c42939c09fe33b25fae889d6f402721dcd78fca1b
+  languageName: node
+  linkType: hard
+
+"react@npm:^17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
   languageName: node
   linkType: hard
 
@@ -12296,7 +12457,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rxjs@npm:7.8.1, rxjs@npm:^7.5.5":
+"rxjs@npm:7.8.1, rxjs@npm:^7.5.5, rxjs@npm:^7.8.1":
   version: 7.8.1
   resolution: "rxjs@npm:7.8.1"
   dependencies:
@@ -12346,6 +12507,16 @@ __metadata:
   version: 2.1.2
   resolution: "safer-buffer@npm:2.1.2"
   checksum: cab8f25ae6f1434abee8d80023d7e72b598cf1327164ddab31003c51215526801e40b66c5e65d658a0af1e9d6478cadcb4c745f4bd6751f97d8644786c0978b0
+  languageName: node
+  linkType: hard
+
+"scheduler@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "scheduler@npm:0.20.2"
+  dependencies:
+    loose-envify: ^1.1.0
+    object-assign: ^4.1.1
+  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
@@ -13780,6 +13951,13 @@ __metadata:
   dependencies:
     typewise-core: ^1.2.0
   checksum: eb3452b1387df8bf8e3b620720d240425a50ce402d7c064c21ac4b5d88c551ee4d1f26cd649b8a17a6d06f7a3675733de841723f8e06bb3edabfeacc4924af4a
+  languageName: node
+  linkType: hard
+
+"u3@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "u3@npm:0.1.1"
+  checksum: d55f396c607b0a2340d6165526b5143a29b369e7e0397b04f79633db77cd668f2da713feb7adb4f93a588e82a388ff995d9a2b16123d0cb02fe394fd2f26b529
   languageName: node
   linkType: hard
 
