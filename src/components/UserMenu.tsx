@@ -6,7 +6,7 @@ import Blockies from 'react-blockies'
 import Address from './Address'
 import useEns from './hooks/useEns'
 import { Tooltip } from './Tooltip/Tooltip'
-import packageJson from '../../../package.json'
+import packageJson from '../../package.json'
 import { useAppStore } from './store/app'
 
 type UserMenuProps = {

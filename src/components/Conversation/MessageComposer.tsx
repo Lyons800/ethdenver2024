@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { classNames } from '../helpers'
 import messageComposerStyles from '../styles/MessageComposer.module.css'
-import upArrowGreen from '../../../../public/up-arrow-green.svg'
-import upArrowGrey from '../../../../public/up-arrow-grey.svg'
+import upArrowGreen from '../../../public/up-arrow-green.svg'
+import upArrowGrey from '../../../public/up-arrow-grey.svg'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 

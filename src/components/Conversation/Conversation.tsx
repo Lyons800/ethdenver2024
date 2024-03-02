@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { MessagesList, MessageComposer } from './'
+import { MessagesList, MessageComposer } from '.'
 import Loader from '../Loader'
 import { useAppStore } from '../store/app'
 import useGetMessages from '../hooks/useGetMessages'

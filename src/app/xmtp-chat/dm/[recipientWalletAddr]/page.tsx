@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import type { NextPage } from 'next'
 import { useRouter, useSearchParams, useParams} from 'next/navigation'
-import { Conversation } from '../../Conversation'
-import useWalletProvider from '../../hooks/useWalletProvider'
-import { isEns } from '../../helpers/string'
+import { Conversation } from '../../../../components/Conversation'
+import useWalletProvider from '../../../../components/hooks/useWalletProvider'
+import { isEns } from '../../../../components/helpers/string'
 
 const ConversationPage: NextPage = () => {
   const router = useRouter()

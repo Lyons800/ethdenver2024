@@ -1,16 +1,16 @@
 'use client';
 import Head from 'next/head';
-import { NavigationView, ConversationView } from './Views';
-import { RecipientControl } from './Conversation';
+import { NavigationView, ConversationView } from '../../components/Views';
+import { RecipientControl } from '../../components/Conversation';
 // import NewMessageButton from './NewMessageButton'
 // import NavigationPanel from './NavigationPanel'
-import XmtpInfoPanel from './XmtpInfoPanel';
+import XmtpInfoPanel from '../../components/XmtpInfoPanel';
 // import UserMenu from './UserMenu'
 import React, { useCallback } from 'react';
-import { useAppStore } from './store/app';
-import useInitXmtpClient from './hooks/useInitXmtpClient';
-import useListConversations from './hooks/useListConversations';
-import useWalletProvider from './hooks/useWalletProvider';
+import { useAppStore } from '../../components/store/app';
+import useInitXmtpClient from '../../components/hooks/useInitXmtpClient';
+import useListConversations from '../../components/hooks/useListConversations';
+import useWalletProvider from '../../components/hooks/useWalletProvider';
 
 const Layout: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const client = useAppStore((state) => state.client);
