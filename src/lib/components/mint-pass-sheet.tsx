@@ -6,7 +6,6 @@
 import { toast } from 'sonner';
 
 import { useWallet } from '@/context/wallet-context';
-import { initNearContract } from '@/near/near-contract-helper';
 
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
