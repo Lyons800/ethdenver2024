@@ -1,43 +1,27 @@
 'use client';
 
 import { useChat, type Message } from 'ai/react';
+import { usePathname } from 'next/navigation';
+import { toast } from 'react-hot-toast';
 
-import { cn } from '@/lib/utils';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 import { ChatList } from '@/lib/components/chat-list';
 import { ChatPanel } from '@/lib/components/chat-panel';
-import { EmptyScreen } from '@/lib/components/empty-screen';
 import { ChatScrollAnchor } from '@/lib/components/chat-scroll-anchor';
-import { useLocalStorage } from '@/hooks/use-local-storage';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/lib/components/ui/dialog';
-import { useState } from 'react';
-import { Button } from '@/lib/components/ui/button';
-import { Input } from '@/lib/components/ui/input';
-import { toast } from 'react-hot-toast';
-import { usePathname, useRouter } from 'next/navigation';
+import { EmptyScreen } from '@/lib/components/empty-screen';
+import { cn } from '@/lib/utils';
 
-const IS_PREVIEW = process.env.VERCEL_ENV === 'preview';
+// const IS_PREVIEW = process.env.VERCEL_ENV === 'preview';
 // export interface ChatProps extends React.ComponentProps<'div'> {
 //   initialMessages?: Message[];
 //   id?: string;
 // }
 
 export default function Chat() {
-  const router = useRouter();
   const path = usePathname();
   const [previewToken, setPreviewToken] = useLocalStorage<string | null>(
     'ai-token',
     null
-  );
-  const [previewTokenDialog, setPreviewTokenDialog] = useState(true);
-  const [previewTokenInput, setPreviewTokenInput] = useState(
-    previewToken ?? ''
   );
 
   const id = '1';
