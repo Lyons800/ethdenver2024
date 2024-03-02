@@ -1,13 +1,53 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 'use client';
 
+import { initNearContract } from '@/near/near-contract-helper';
 import { Button } from './ui/button';
 import { Drawer, DrawerContent, DrawerTrigger } from './ui/drawer';
 
 export const StakeAndMintSheet = () => {
   // Dummy function for slide end handling. Replace with your actual logic.
-  const handleSlideEnd = () => {
-    // console.log('Slide action confirmed');
-    // Here, you can call onConfirm or any function to handle the confirmation and staking logic.
+  // const handleSlideEnd = () => {
+  //   // console.log('Slide action confirmed');
+  //   // Here, you can call onConfirm or any function to handle the confirmation and staking logic.
+  // };
+
+  const createPass = async () => {
+    try {
+      const contract = await initNearContract('testnet');
+
+      // Assuming you have these values correctly defined elsewhere in your code
+      const token_id = '21'; // Unique token ID for the NFT
+      const receiver_id = 'ethprince.testnet'; // The account that will receive the NFT
+      const metadata = {
+        event_id: null, // Use eventId as the title in metadata
+        title: null, // Use eventName as the title in metadata
+        description: null, // Event description
+        // Add other metadata fields as needed
+      };
+      const perpetual_royalties = {
+        // Define perpetual royalties here, if any
+        // "account_id.testnet": percentage (e.g., 500 for 5%)
+      };
+
+      // Adjust the call to match the `nft_mint` function's expected parameters
+
+      //@ts-ignore
+      const result = await contract.nft_mint({
+        token_id,
+        metadata,
+        receiver_id,
+        perpetual_royalties:
+          Object.keys(perpetual_royalties).length > 0
+            ? perpetual_royalties
+            : null,
+      });
+
+      console.log('NFT minted:', result);
+    } catch (error) {
+      console.error('Failed to mint NFT', error);
+    }
   };
 
   return (
@@ -28,7 +68,7 @@ export const StakeAndMintSheet = () => {
         </p>
 
         {/* Slider to Confirm */}
-        <div className="relative my-4 w-full">
+        {/* <div className="relative my-4 w-full">
           <div className="h-12 w-full rounded-full bg-gray-200" />
           <div
             className="leading-12 absolute top-0 h-12 w-24 cursor-pointer rounded-full bg-green-500 text-center text-white"
@@ -38,7 +78,10 @@ export const StakeAndMintSheet = () => {
           >
             Slide
           </div>
-        </div>
+        </div> */}
+        <Button onClick={createPass} className="w-full justify-center gap-2">
+          Mint Event Pass
+        </Button>
       </DrawerContent>
     </Drawer>
   );

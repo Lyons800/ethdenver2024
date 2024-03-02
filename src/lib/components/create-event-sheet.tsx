@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console */
 
 'use client';
 
 import { PlusCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
+import { initNearContract } from '@/near/near-contract-helper';
 
 import { LocationSelectSheet } from './location-select-sheet';
 import MapComponent from './map';
@@ -43,6 +46,49 @@ export function CreateEventSheet() {
     latitude: null,
     longitude: null,
   });
+
+  interface EventDetails {
+    name: string;
+    description: string;
+    date: string;
+    coordinates: {
+      latitude: number | null;
+      longitude: number | null;
+    };
+  }
+
+  const createEventContract = async (eventDetails: EventDetails) => {
+    try {
+      const factoryContract = await initNearContract('testnet');
+
+      // Prepare the event details as metadata
+      const eventMetadata = {
+        title: eventDetails.name,
+        description: eventDetails.description,
+        date: eventDetails.date,
+        location: JSON.stringify({
+          latitude: eventDetails.coordinates.latitude,
+          longitude: eventDetails.coordinates.longitude,
+        }),
+        // Add other event details as needed
+      };
+
+      // Call the factory contract's method to deploy a new event contract
+      // with the event metadata
+      //@ts-ignore
+      const newContractDetails = await factoryContract.new({
+        owner_id: 'ethprince.testnet', // Specify the owner of the new contract
+        metadata: eventMetadata, // Pass the prepared metadata
+      });
+
+      console.log(
+        'New event contract deployed at:',
+        newContractDetails.contractAddress
+      );
+    } catch (error) {
+      console.error('Failed to deploy new event contract:', error);
+    }
+  };
 
   useEffect(() => {
     if (selectedAddress) {
@@ -145,7 +191,19 @@ export function CreateEventSheet() {
               </div>
             </div>
             <div className="flex w-full justify-center">
-              <Button className=" w-[300px] justify-center">Create</Button>
+              <Button
+                className="w-[300px] justify-center"
+                onClick={() =>
+                  createEventContract({
+                    name: eventName,
+                    description: eventDescription,
+                    date: eventDate,
+                    coordinates, // Assuming this state contains the latitude and longitude
+                  })
+                }
+              >
+                Create
+              </Button>
             </div>
           </div>
         </ScrollArea>

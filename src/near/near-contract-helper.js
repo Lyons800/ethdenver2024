@@ -2,6 +2,7 @@
 import * as nearAPI from 'near-api-js';
 import getConfig from '@/config';
 
+
 export async function initNearContract(env) {
   const config = getConfig(env);
 
@@ -27,6 +28,8 @@ export async function initNearContract(env) {
         'created_at',
       ],
       changeMethods: [
+        'new',
+        'nft_mint',
         'join',
         'ping',
         'create_group',
