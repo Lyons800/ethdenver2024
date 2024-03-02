@@ -48,12 +48,12 @@ const SignInButton = () => {
   }, []);
 
   const handleSignIn = () => {
-    // @ts-expect-error
+    // @ts-ignore
     wallet.signIn();
   };
 
   const handleSignOut = () => {
-    // @ts-expect-error
+    // @ts-ignore
     wallet.signOut();
     setIsSignedIn(false);
     deleteCookie('near-function-key');
