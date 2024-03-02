@@ -21,19 +21,19 @@ export function useNearContract(contractId: string, wallet: any) {
         method: 'nft_tokens',
         args: {},
       }),
-    nftTokens: (fromIndex) =>
+    nftTokens: (fromIndex: string) =>
       wallet.viewMethod({
         contractId,
         method: 'nft_tokens',
         args: { from_index: fromIndex },
       }),
-    nftSupplyForOwner: (accountId) =>
+    nftSupplyForOwner: (accountId: string) =>
       wallet.viewMethod({
         contractId,
         method: 'nft_supply_for_owner',
         args: { account_id: accountId },
       }),
-    nftTokensForOwner: (accountId, fromIndex, limit) =>
+    nftTokensForOwner: (accountId: string, fromIndex: string, limit: number) =>
       wallet.viewMethod({
         contractId,
         method: 'nft_tokens_for_owner',
@@ -45,7 +45,7 @@ export function useNearContract(contractId: string, wallet: any) {
         method: 'nft_metadata',
         args: {},
       }),
-    nftToken: (tokenId) =>
+    nftToken: (tokenId: string) =>
       wallet.viewMethod({
         contractId,
         method: 'nft_token',
@@ -53,7 +53,7 @@ export function useNearContract(contractId: string, wallet: any) {
       }),
 
     // Call methods
-    nftMint: (tokenId, metadata, receiverId) =>
+    nftMint: (tokenId: string, metadata: any, receiverId: string) =>
       wallet.callMethod({
         contractId,
         method: 'nft_mint',
@@ -64,46 +64,46 @@ export function useNearContract(contractId: string, wallet: any) {
         },
         deposit: '6000000000000000000000',
       }),
-    nftTransfer: (receiverId, tokenId, approvalId, memo) =>
-      wallet.callMethod({
-        contractId,
-        method: 'nft_transfer',
-        args: {
-          receiver_id: receiverId,
-          token_id: tokenId,
-          approval_id: approvalId,
-          memo: memo,
-        },
-      }),
-    nftApprove: (tokenId, accountId, msg) =>
-      wallet.callMethod({
-        contractId,
-        method: 'nft_approve',
-        args: { token_id: tokenId, account_id: accountId, msg: msg },
-      }),
-    nftRevoke: (tokenId, accountId) =>
-      wallet.callMethod({
-        contractId,
-        method: 'nft_revoke',
-        args: { token_id: tokenId, account_id: accountId },
-      }),
-    nftRevokeAll: (tokenId) =>
-      wallet.callMethod({
-        contractId,
-        method: 'nft_revoke_all',
-        args: { token_id: tokenId },
-      }),
-    nftTransferCall: (receiverId, tokenId, approvalId, memo, msg) =>
-      wallet.callMethod({
-        contractId,
-        method: 'nft_transfer_call',
-        args: {
-          receiver_id: receiverId,
-          token_id: tokenId,
-          approval_id: approvalId,
-          memo: memo,
-          msg: msg,
-        },
-      }),
+    // nftTransfer: (receiverId:string, tokenId:string, approvalId, memo) =>
+    //   wallet.callMethod({
+    //     contractId,
+    //     method: 'nft_transfer',
+    //     args: {
+    //       receiver_id: receiverId,
+    //       token_id: tokenId,
+    //       approval_id: approvalId,
+    //       memo: memo,
+    //     },
+    //   }),
+    // nftApprove: (tokenId, accountId, msg) =>
+    //   wallet.callMethod({
+    //     contractId,
+    //     method: 'nft_approve',
+    //     args: { token_id: tokenId, account_id: accountId, msg: msg },
+    //   }),
+    // nftRevoke: (tokenId, accountId) =>
+    //   wallet.callMethod({
+    //     contractId,
+    //     method: 'nft_revoke',
+    //     args: { token_id: tokenId, account_id: accountId },
+    //   }),
+    // nftRevokeAll: (tokenId) =>
+    //   wallet.callMethod({
+    //     contractId,
+    //     method: 'nft_revoke_all',
+    //     args: { token_id: tokenId },
+    //   }),
+    // nftTransferCall: (receiverId, tokenId, approvalId, memo, msg) =>
+    //   wallet.callMethod({
+    //     contractId,
+    //     method: 'nft_transfer_call',
+    //     args: {
+    //       receiver_id: receiverId,
+    //       token_id: tokenId,
+    //       approval_id: approvalId,
+    //       memo: memo,
+    //       msg: msg,
+    //     },
+    //   }),
   };
 }
