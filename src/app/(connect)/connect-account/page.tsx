@@ -42,6 +42,16 @@ export default function ConnectPage() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      style={{
+        background:
+          'url("https://img.freepik.com/free-vector/blue-fluid-background-frame_53876-99019.jpg?w=900&t=st=1709394552~exp=1709395152~hmac=cd670c77793d17f5dab718c49202dd16cdc290aa7d8a9619cacd0d266cc5434d") center center / cover no-repeat',
+        padding: '50px', // Example padding, adjust as needed
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+      }}
     >
       <motion.h1 variants={textVariants} className="text-3xl font-bold">
         Welcome to Our PWA!
