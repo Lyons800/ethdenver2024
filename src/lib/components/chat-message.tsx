@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/no-unstable-nested-components */
 // Inspired by Chatbot-UI and modified to fit the needs of this project
 // @see https://github.com/mckaywrigley/chatbot-ui/blob/main/components/Chat/ChatMessage.tsx
 
 import type { Message } from 'ai';
+import type { ReactNode } from 'react';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
@@ -14,6 +17,13 @@ import { cn } from '@/lib/utils';
 
 export interface ChatMessageProps {
   message: Message;
+}
+
+interface CodeComponentProps extends React.HTMLAttributes<HTMLElement> {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: ReactNode; // Use ReactNode for children
 }
 
 export function ChatMessage({ message, ...props }: ChatMessageProps) {
@@ -40,7 +50,13 @@ export function ChatMessage({ message, ...props }: ChatMessageProps) {
             p({ children }) {
               return <p className="mb-2 last:mb-0">{children}</p>;
             },
-            code({ node, inline, className, children, ...props }) {
+            code({
+              node,
+              inline,
+              className,
+              children,
+              ...props
+            }: CodeComponentProps) {
               if (children.length) {
                 if (children[0] == '▍') {
                   return (
